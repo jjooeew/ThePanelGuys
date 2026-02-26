@@ -36,13 +36,13 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/design-c" className="flex items-center gap-2 group">
           <div className="relative">
             <Snowflake className="w-8 h-8 text-ice-blue transition-transform duration-500 group-hover:rotate-180" />
             <div className="absolute inset-0 bg-ice-blue/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <span className="font-display font-bold text-xl tracking-tighter uppercase">
-            Cryos<span className="text-ice-blue">.</span>
+            The Panel Guys<span className="text-ice-blue">.</span>
           </span>
         </Link>
 

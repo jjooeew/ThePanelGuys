@@ -46,8 +46,8 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="font-display text-5xl md:text-8xl font-bold tracking-tighter mb-6 uppercase leading-none">
-              Cooling Solutions.<br />
-              <span className="text-ice-blue">Engineered to Perform.</span>
+              The Panel Guys<br />
+              <span className="text-ice-blue">Cooling Solutions.</span>
             </h1>
             <p className="text-sm md:text-base uppercase tracking-[0.3em] text-cool-white/60 mb-10 font-medium">
               Professionally built cool rooms for commercial & luxury residential.

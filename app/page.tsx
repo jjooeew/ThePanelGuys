@@ -60,7 +60,7 @@ export default function Home() {
     {
       name: "David Miller",
       business: "Miller's Fine Meats",
-      text: "Arctic Precision built our new walk-in freezer last year. The quality is top-notch and the team was professional from start to finish. Highly recommended.",
+      text: "The Panel Guys built our new walk-in freezer last year. The quality is top-notch and the team was professional from start to finish. Highly recommended.",
     },
     {
       name: "Sarah Jenkins",
@@ -206,7 +206,7 @@ export default function Home() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-white/20"></div>
                 <img
                   src="https://picsum.photos/seed/owner/800/1000"
-                  alt="Owner of Arctic Precision"
+                  alt="Owner of The Panel Guys"
                   className="rounded-lg shadow-2xl relative z-10"
                   referrerPolicy="no-referrer"
                 />
@@ -223,7 +223,7 @@ export default function Home() {
                   <p>
                     My name is Mark, and I've spent the last 20 years building
                     and maintaining cool rooms for businesses just like yours. I
-                    started Arctic Precision with a simple goal: to provide
+                    started The Panel Guys with a simple goal: to provide
                     honest, reliable service that local businesses can count on.
                   </p>
                   <p>

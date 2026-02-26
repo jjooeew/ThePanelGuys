@@ -11,7 +11,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-white flex items-center justify-center rounded">
                 <span className="text-navy-900 font-bold text-lg">A</span>
               </div>
-              <span className="font-bold text-lg uppercase tracking-wider">Arctic Precision</span>
+              <span className="font-bold text-lg uppercase tracking-wider">The Panel Guys</span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
               Locally owned and operated, providing high-quality custom cool room solutions for businesses across the region.
@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-slate-500 uppercase tracking-widest">
-          <p>© {new Date().getFullYear()} Arctic Precision Cool Rooms. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} The Panel Guys Cool Rooms. All rights reserved.</p>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-white"><Facebook size={16} /></a>
             <a href="#" className="hover:text-white"><Instagram size={16} /></a>

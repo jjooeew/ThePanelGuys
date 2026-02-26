@@ -23,7 +23,7 @@ export default function Navbar() {
               <span className="text-white font-bold text-xl">A</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-navy-900 font-bold text-lg leading-tight uppercase tracking-wider">Arctic Precision</span>
+              <span className="text-navy-900 font-bold text-lg leading-tight uppercase tracking-wider">The Panel Guys</span>
               <span className="text-slate-500 text-xs uppercase tracking-widest font-medium">Cool Rooms</span>
             </div>
           </Link>
