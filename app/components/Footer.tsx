@@ -46,7 +46,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start space-x-3">
                 <Mail size={18} className="text-slate-400 shrink-0" />
-                <span>info@arcticprecision.com.au</span>
+                <span>info@The Panel Guys.com.au</span>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="text-slate-400 shrink-0" />

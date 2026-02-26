@@ -22,7 +22,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2 group">
               <div className="bg-brand p-2 rounded-lg group-hover:rotate-12 transition-transform">
-                <Snowflake className="w-6 h-6 text-white" />
+                <Snowflake className="w-6 h-6 text-blue-500" />
               </div>
               <span className="text-xl font-black tracking-tighter text-slate-900 uppercase">
                 The Panel Guys

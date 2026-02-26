@@ -14,7 +14,7 @@ export default function Footer() {
                 <Snowflake className="w-6 h-6 text-white" />
               </div>
               <span className="text-xl font-black tracking-tighter text-white uppercase">
-                Arctic<span className="text-brand">Pro</span>
+                The Panel Guys
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -60,18 +60,18 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-brand" />
-                info@arcticpro.com.au
+                info@thepanelguys.co.nz
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-brand" />
-                123 Industrial Way, Melbourne
+                123 Industrial Way, Auckland
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>© 2024 ArcticPro Refrigeration. All rights reserved.</p>
+          <p>© 2024 The Panel Guys. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-slate-300">Privacy Policy</a>
             <a href="#" className="hover:text-slate-300">Terms of Service</a>
