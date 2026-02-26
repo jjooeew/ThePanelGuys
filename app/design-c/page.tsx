@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col w-full">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative py-18 lg:py-20 overflow-hidden bg-white">
+      <section className="relative py-4 lg:py-10 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div 
@@ -74,7 +74,7 @@ export default function Home() {
                 />
               </div>
               {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 max-w-[200px]">
+              <div className="absolute -bottom-6 -left-4 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 max-w-[200px]">
                 <div className="flex items-center gap-2 text-brand mb-2">
                   <Award className="w-6 h-6" />
                   <span className="font-bold">Top Rated</span>
