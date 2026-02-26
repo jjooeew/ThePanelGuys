@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col w-full">
       <Navbar />
       {/* Hero Section */}
-      <section className="relative py-4 lg:py-10 overflow-hidden bg-white">
+      <section className="relative pt-5 pb-20 lg:py-10 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div 
