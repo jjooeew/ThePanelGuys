@@ -1,4 +1,4 @@
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, Snowflake } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
@@ -20,7 +20,7 @@ export default function Navbar() {
         <div className="flex justify-between h-20 items-center">
           <Link href="/design-b" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-navy-900 flex items-center justify-center rounded">
-              <span className="text-white font-bold text-xl">A</span>
+            <Snowflake className="w-8 h-8 text-ice-blue transition-transform duration-500 group-hover:rotate-180" />
             </div>
             <div className="flex flex-col">
               <span className="text-navy-900 font-bold text-lg leading-tight uppercase tracking-wider">The Panel Guys</span>
