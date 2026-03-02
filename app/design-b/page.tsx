@@ -32,7 +32,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=2000" 
+            src="images/freezer-rooms-sample-img2.jpg" 
             alt="Stainless Steel Cool Room" 
             className="w-full h-full object-cover opacity-40 scale-105"
           />

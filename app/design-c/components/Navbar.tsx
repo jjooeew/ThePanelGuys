@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/design-d" className="flex items-center gap-2 group">
               <div className="bg-brand p-2 rounded-lg group-hover:rotate-12 transition-transform">
                 <Snowflake className="w-6 h-6 text-blue-500" />
               </div>

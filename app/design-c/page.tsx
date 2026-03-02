@@ -67,7 +67,7 @@ export default function Home() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
                 <img 
-                  src="https://picsum.photos/seed/coolroom/800/800" 
+                  src="images/freezer-rooms-sample-img2.jpg" 
                   alt="Commercial Cool Room Installation" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

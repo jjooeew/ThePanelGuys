@@ -77,7 +77,7 @@ export default function Home() {
         <section className="relative h-[85vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://picsum.photos/seed/tradesman/1920/1080?brightness=0.6"
+              src="images/freezer-rooms-sample-img2.jpg"
               alt="Owner working on-site"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
