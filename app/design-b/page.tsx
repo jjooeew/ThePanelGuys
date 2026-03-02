@@ -10,17 +10,17 @@ const projects = [
   {
     title: "The Glass Vault",
     category: "Luxury Residential",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/freezer-rooms-sample-img2.jpg",
   },
   {
     title: "Industrial Core",
     category: "Commercial Logistics",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/freezer-rooms-sample-img3.jpg",
   },
   {
     title: "Precision Lab",
     category: "Medical Research",
-    image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/freezer-rooms-sample-img4.jpg",
   }
 ];
 
@@ -32,7 +32,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="images/freezer-rooms-sample-img2.jpg" 
+            src="images/freezer-rooms-sample-img3.jpg" 
             alt="Stainless Steel Cool Room" 
             className="w-full h-full object-cover opacity-40 scale-105"
           />

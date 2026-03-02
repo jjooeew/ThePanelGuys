@@ -16,20 +16,10 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <main>
-    <Navbar />
+      <Navbar />
       <div className="overflow-hidden">
         {/* Hero Section */}
         <section className="relative h-screen flex items-center">
-          <div className="absolute inset-0 z-0">
-            <img
-              src="images/freezer-rooms-sample-img2.jpg"
-              alt="Commercial Cool Room Installation"
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-charcoal/60"></div>
-          </div>
-
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -38,11 +28,11 @@ export default function Home() {
               className="max-w-3xl"
             >
               <h1 className="text-5xl md:text-7xl text-white mb-6 leading-tight">
-                Built to Last. <br />
-                <span className="text-steel-blue">Engineered to Perform.</span>
+                The Panel Guys <br />
+                <span className="text-ice-blue">Cool Guys, Cool Rooms.</span>
               </h1>
-              <p className="text-xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
-                ArcticPro Systems specializes in custom-built commercial
+               <p className="text-xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
+                The Panel Guys specialise in custom-built commercial
                 refrigeration and walk-in cool rooms for the food service,
                 pharmaceutical, and logistics industries.
               </p>
@@ -63,6 +53,15 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+          <div className="absolute inset-0 z-0">
+            <img
+              src="images/freezer-rooms-sample-img3.jpg"
+              alt="Commercial Cool Room Installation"
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-charcoal/60 backdrop-blur-[2px]"></div>
+          </div>
 
           {/* Scroll Indicator */}
           <motion.div
@@ -76,6 +75,7 @@ export default function Home() {
           </motion.div>
         </section>
 
+       
         {/* Services Section */}
         <section className="py-24 bg-gray-50 industrial-grid">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -174,7 +174,7 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden border-8 border-white/5">
                   <img
-                    src="https://picsum.photos/seed/industrial-team/800/800"
+                    src="images/freezer-rooms-sample-img2.jpg"
                     alt="Our Team at Work"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"

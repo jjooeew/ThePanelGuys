@@ -39,21 +39,21 @@ export const SERVICES = [
     title: 'Custom Cool Rooms',
     description: 'Precision-engineered walk-in refrigeration systems tailored to your specific space and temperature requirements.',
     icon: Snowflake,
-    image: 'https://picsum.photos/seed/coolroom/800/600',
+    image: 'images/freezer-rooms-sample-img2.jpg',
   },
   {
     id: 'freezers',
     title: 'Walk-In Freezers',
     description: 'Heavy-duty freezing solutions designed for long-term storage and maximum energy efficiency in commercial environments.',
     icon: Thermometer,
-    image: 'https://picsum.photos/seed/freezer/800/600',
+    image: 'images/freezer-rooms-sample-img3.jpg',
   },
   {
     id: 'maintenance',
     title: 'Repairs & Maintenance',
     description: '24/7 emergency support and scheduled preventative maintenance to keep your operations running without interruption.',
     icon: Wrench,
-    image: 'https://picsum.photos/seed/repair/800/600',
+    image: 'images/freezer-rooms-sample-img4.jpg',
   },
 ];
 
@@ -86,7 +86,7 @@ export const PROJECTS = [
     title: 'Metro Distribution Center',
     category: 'Logistics',
     location: 'Chicago, IL',
-    image: 'https://picsum.photos/seed/proj1/1200/800',
+    image: 'images/freezer-rooms-sample-img.jpeg',
     description: 'A 50,000 sq ft multi-temperature facility with advanced climate control.',
   },
   {
@@ -94,7 +94,7 @@ export const PROJECTS = [
     title: 'Grand Plaza Hotel',
     category: 'Hospitality',
     location: 'New York, NY',
-    image: 'https://picsum.photos/seed/proj2/1200/800',
+    image: 'images/freezer-rooms-sample-img3.jpg',
     description: 'Custom kitchen walk-ins and wine cellar refrigeration systems.',
   },
   {
@@ -102,7 +102,7 @@ export const PROJECTS = [
     title: 'Fresh Foods Market',
     category: 'Retail',
     location: 'Austin, TX',
-    image: 'https://picsum.photos/seed/proj3/1200/800',
+    image: 'images/freezer-rooms-sample-img4.jpg',
     description: 'Energy-efficient display cool rooms and back-of-house storage.',
   },
   {
@@ -110,7 +110,7 @@ export const PROJECTS = [
     title: 'BioTech Research Lab',
     category: 'Pharmaceutical',
     location: 'Boston, MA',
-    image: 'https://picsum.photos/seed/proj4/1200/800',
+    image: 'images/freezer-rooms-sample-img2.jpg',
     description: 'Ultra-precise temperature controlled rooms for sensitive medical storage.',
   },
   {

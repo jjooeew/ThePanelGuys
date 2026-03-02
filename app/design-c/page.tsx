@@ -8,6 +8,26 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 export default function Home() {
+
+  const projects = [
+    {
+      name: "Commercial Kitchen",
+      description: "Custom Walk in Installation",
+      img: "/images/freezer-rooms-sample-img2.jpg"
+    },
+    {
+      name: "Liquor Store",
+      description: "Full Fit Oute",
+      img: "/images/freezer-rooms-sample-img3.jpg"
+    },
+    {
+      name: "Supermarket",
+      description: "Supermarket Liquor Area",
+      img: "/images/freezer-rooms-sample-img4.jpg"
+    }
+  ]
+
+
   return (
     <div className="flex flex-col w-full">
       <Navbar />
@@ -67,7 +87,7 @@ export default function Home() {
             >
               <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
                 <img 
-                  src="images/freezer-rooms-sample-img2.jpg" 
+                  src="images/freezer-rooms-sample-img3.jpg" 
                   alt="Commercial Cool Room Installation" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -158,17 +178,17 @@ export default function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((id) => (
-              <div key={id} className="group relative overflow-hidden rounded-2xl aspect-[4/3]">
+            {projects.map((project) => (
+              <div key={project.name} className="group relative overflow-hidden rounded-2xl aspect-[4/3]">
                 <img 
-                  src={`https://picsum.photos/seed/project${id}/600/450`} 
+                  src={project.img} 
                   alt="Project" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex flex-col justify-end p-6">
-                  <span className="text-white font-bold text-lg">Commercial Kitchen {id}</span>
-                  <span className="text-white/70 text-sm">Custom Walk-in Installation</span>
+                  <span className="text-white font-bold text-lg">{project.name}</span>
+                  <span className="text-white/70 text-sm">{project.description}</span>
                 </div>
               </div>
             ))}

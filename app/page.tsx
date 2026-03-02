@@ -40,19 +40,19 @@ export default function Home() {
       id: 1,
       title: "The Local Butcher",
       category: "Full Fit-out",
-      image: "https://picsum.photos/seed/refrig1/800/600",
+      image: "/images/freezer-rooms-sample-img4.jpg",
     },
     {
       id: 2,
       title: "Coastal Seafood Market",
       category: "Freezer Room",
-      image: "https://picsum.photos/seed/refrig2/800/600",
+      image: "/images/freezer-rooms-sample-img2.jpg",
     },
     {
       id: 3,
       title: "Central Hotel Kitchen",
       category: "Cool Room Upgrade",
-      image: "https://picsum.photos/seed/refrig3/800/600",
+      image: "/images/freezer-rooms-sample-img3.jpg",
     },
   ];
 
@@ -77,7 +77,7 @@ export default function Home() {
         <section className="relative h-[85vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="images/freezer-rooms-sample-img2.jpg"
+              src="images/freezer-rooms-sample-img.jpeg"
               alt="Owner working on-site"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -94,7 +94,7 @@ export default function Home() {
             >
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                 Custom Cool Rooms <br />
-                <span className="text-white/90">Built Right.</span>
+                <span className="text-ice-blue">Built Right.</span>
               </h1>
               <p className="text-xl text-white/90 mb-10 leading-relaxed font-medium">
                 Reliable, high-performance refrigeration solutions for local
@@ -205,7 +205,7 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-white/20"></div>
                 <img
-                  src="https://picsum.photos/seed/owner/800/1000"
+                  src="/images/freezer-rooms-sample-img3.jpg"
                   alt="Owner of The Panel Guys"
                   className="rounded-lg shadow-2xl relative z-10"
                   referrerPolicy="no-referrer"
