@@ -29,8 +29,8 @@ export const ROUTES = {
 
 export const CONTACT_INFO = {
   PHONE: '+1 (800) 555-0199',
-  EMAIL: 'info@arcticprosystems.com',
-  ADDRESS: '123 Industrial Way, Suite 400, Chicago, IL 60601',
+  EMAIL: 'info@thepanelguys.com',
+  ADDRESS: '123 Industrial Way, Auckland',
 };
 
 export const SERVICES = [

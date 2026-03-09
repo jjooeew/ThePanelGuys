@@ -5,6 +5,7 @@ import { ROUTES, CONTACT_INFO } from '../constants';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,10 +20,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: ROUTES.HOME },
+    { name: 'Home', path: '/design-d' },
     { name: 'About', path: ROUTES.ABOUT },
-    { name: 'Projects', path: ROUTES.PROJECTS },
-    { name: 'Contact', path: ROUTES.CONTACT },
+    { name: 'Projects', path: '/design-d/projects' },
+    { name: 'Contact', path: '/design-d/contact' },
   ];
 
   return (
