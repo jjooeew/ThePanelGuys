@@ -14,6 +14,7 @@ import {
 import { CONTACT_INFO } from "../constants";
 import { FormEvent, useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 type FormData = {
   name: string;
@@ -79,7 +80,7 @@ export default function Contact() {
                       <h3 className="font-bold text-navy-900 uppercase tracking-widest text-sm mb-1">
                         Phone
                       </h3>
-                      <p className="text-lg text-slate-600">0400 000 000</p>
+                      <p className="text-lg text-slate-600">0800 000 000</p>
                     </div>
                   </div>
 
@@ -106,7 +107,7 @@ export default function Contact() {
                         Service Area
                       </h3>
                       <p className="text-lg text-slate-600">
-                        Greater Region & Surrounds
+                        Greater Auckland
                       </p>
                     </div>
                   </div>
@@ -232,6 +233,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

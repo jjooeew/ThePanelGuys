@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function Projects() {
   const projects = [
@@ -127,6 +128,7 @@ export default function Projects() {
           </Link>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

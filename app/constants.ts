@@ -135,7 +135,7 @@ export const TESTIMONIALS = [
   {
     name: 'Robert Chen',
     role: 'Operations Manager, Global Logistics',
-    content: 'ArcticPro delivered our facility ahead of schedule. The precision of their temperature control is unmatched in the industry.',
+    content: 'The Panels Guys delivered our facility ahead of schedule. The precision of their temperature control is unmatched in the industry.',
   },
   {
     name: 'Sarah Jenkins',
