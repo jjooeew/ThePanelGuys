@@ -19,24 +19,24 @@ export default function Home() {
       <Navbar />
       <div className="overflow-hidden">
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center">
-          <div className="relative z-10 max-w-7xl ml-32 px-4 sm:px-6 lg:px-8 pt-20">
+        <section className="relative h-screen flex items-center justify-center text-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <h1 className="text-5xl md:text-7xl text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl text-white mb-6 leading-tight ">
                 The Panel Guys <br />
-                <span className="text-ice-blue">Cool Guys, Cool Rooms.</span>
+                <span className="text-ice-blue">Cool Room Specialists.</span>
               </h1>
                <p className="text-xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
                 The Panel Guys specialise in custom-built commercial
                 refrigeration and walk-in cool rooms for the food service,
                 pharmaceutical, and logistics industries.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href={ROUTES.CONTACT}
                   className="bg-steel-blue hover:bg-steel-blue-dark text-white px-8 py-4 rounded-lg font-bold uppercase tracking-widest transition-all flex items-center justify-center group"
@@ -182,7 +182,7 @@ export default function Home() {
                 </div>
                 <div className="absolute -bottom-10 -left-10 bg-steel-blue p-10 rounded-2xl shadow-2xl hidden md:block">
                   <div className="text-5xl font-display font-bold mb-2">
-                    25+
+                    15+
                   </div>
                   <div className="text-sm font-bold uppercase tracking-widest opacity-80">
                     Years of Excellence
