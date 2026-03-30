@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Snowflake } from 'lucide-react';
-import { ROUTES, CONTACT_INFO } from '../constants';
-import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Menu, X, Snowflake } from "lucide-react";
+import { ROUTES, CONTACT_INFO } from "../constants";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,38 +15,42 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: "Home", path: "/" },
     // { name: 'About', path: ROUTES.ABOUT },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled 
-          ? 'bg-white/90 backdrop-blur-md py-3 shadow-md border-b border-gray-200' 
-          : 'bg-transparent py-6'
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-white/90 backdrop-blur-md py-3 shadow-md border-b border-gray-200"
+          : "bg-transparent py-6",
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="bg-steel-blue p-1.5 rounded-lg group-hover:bg-steel-blue-dark transition-colors">
-              <Snowflake className="w-6 h-6 text-white" />
+            <div className="relative h-25 w-auto aspect-[3/1]">
+              {" "}
+              {/* Adjust aspect ratio to match your logo */}
+              <img
+                src="/images/logo-no-bg.png" // Replace with your actual filename & extension
+                alt="Panel Guys Logo"
+                className={cn(
+                  "h-full w-auto object-contain transition-all duration-300",
+                  // If your logo is dark, this makes it white when the nav is transparent
+                  !isScrolled && "brightness-0 invert",
+                )}
+              />
             </div>
-            <span className={cn(
-              "text-2xl font-display font-bold tracking-tighter transition-colors",
-              isScrolled ? "text-charcoal" : "text-white"
-            )}>
-              PANEL<span className="text-steel-blue">GUYS</span>
-            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -57,9 +61,11 @@ export default function Navbar() {
                 href={link.path}
                 className={cn(
                   "text-sm font-semibold uppercase tracking-widest transition-colors hover:text-steel-blue",
-                  location === link.path 
-                    ? "text-steel-blue" 
-                    : isScrolled ? "text-charcoal" : "text-white"
+                  location === link.path
+                    ? "text-steel-blue"
+                    : isScrolled
+                      ? "text-charcoal"
+                      : "text-white",
                 )}
               >
                 {link.name}
@@ -79,10 +85,14 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
                 "p-2 rounded-md transition-colors",
-                isScrolled ? "text-charcoal" : "text-white"
+                isScrolled ? "text-charcoal" : "text-white",
               )}
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -93,7 +103,7 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-b border-gray-200 overflow-hidden"
           >
@@ -105,7 +115,9 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-3 py-4 text-base font-bold uppercase tracking-widest border-b border-gray-50",
-                    location === link.path ? "text-steel-blue" : "text-charcoal"
+                    location === link.path
+                      ? "text-steel-blue"
+                      : "text-charcoal",
                   )}
                 >
                   {link.name}

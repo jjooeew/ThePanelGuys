@@ -10,30 +10,37 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: "The Local Butcher Fit-out",
+      title: "Sawmill Brewery",
       description: "A complete custom refrigeration solution including a large walk-in freezer and a separate display cool room for a busy local butcher shop.",
-      image: "/images/freezer-rooms-sample-img4.jpg",
+      image: "/images/Sawmill-Brewery/5.jpg",
       category: "Full Fit-out"
     },
     {
       id: 2,
-      title: "Coastal Seafood Freezer Room",
+      title: "Manly Park Kitchen",
       description: "Installation of a high-capacity commercial freezer room designed to maintain consistent sub-zero temperatures for fresh seafood storage.",
-      image: "/images/freezer-rooms-sample-img3.jpg",
+      image: "/images/Manly-Park-Kitchen/13.jpg",
       category: "Freezer Room"
     },
     {
       id: 3,
-      title: "Central Hotel Kitchen Upgrade",
+      title: "Healthcare Logistics",
       description: "Modernization of existing cool room facilities with new energy-efficient panels and advanced digital temperature monitoring systems.",
-      image: "/images/freezer-rooms-sample-img2.jpg",
+      image: "/images/Healthcare-Logistics/21.jpg",
       category: "Cool Room Upgrade"
     },
     {
       id: 4,
-      title: "Artisan Bakery Storage",
+      title: "Aroa Biosurgery",
       description: "Custom-sized cool room built to fit a unique corner space, providing optimal temperature control for dough proofing and ingredient storage.",
-      image: "/images/freezer-rooms-sample-img.jpeg",
+      image: "/images/Aroa-Biosurgery/28.jpg",
+      category: "Custom Build"
+    },
+        {
+      id: 5,
+      title: "Primor Produce",
+      description: "Custom-sized cool room built to fit a unique corner space, providing optimal temperature control for dough proofing and ingredient storage.",
+      image: "/images/Primor-Produce/34.jpg",
       category: "Custom Build"
     },
     // {
@@ -50,11 +57,12 @@ export default function Projects() {
       <Navbar />
       {/* Header */}
       <section className="bg-navy-900 py-24">
+        <div className="absolute inset-0 opacity-20 industrial-grid"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-white my-6 uppercase tracking-tight"
+            className="text-4xl md:text-5xl font-bold text-white my-15 uppercase tracking-tight"
           >
             Completed Projects
           </motion.h1>

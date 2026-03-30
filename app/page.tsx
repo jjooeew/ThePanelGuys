@@ -29,7 +29,7 @@ export default function Home() {
             >
               <h1 className="text-5xl md:text-7xl text-white mb-6 leading-tight ">
                 The Panel Guys <br />
-                <span className="text-ice-blue">Cool Room Specialists.</span>
+                <span className="text-panelguys-blue">Cool Room Specialists.</span>
               </h1>
                <p className="text-xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
                 The Panel Guys specialise in custom-built commercial
@@ -55,7 +55,7 @@ export default function Home() {
           </div>
           <div className="absolute inset-0 z-0">
             <img
-              src="images/freezer-rooms-sample-img3.jpg"
+              src="/images/Primor-Produce/34-tidied.png"
               alt="Commercial Cool Room Installation"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -174,7 +174,7 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden border-8 border-white/5">
                   <img
-                    src="images/freezer-rooms-sample-img2.jpg"
+                    src="/images/Manly-Park-Kitchen/13.jpg"
                     alt="Our Team at Work"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"

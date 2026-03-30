@@ -45,7 +45,7 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white  my-6 uppercase tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-white my-15 uppercase tracking-tight">
               Get In Touch
             </h1>
             <p className="text-xl text-gray-400 leading-relaxed">
