@@ -46,7 +46,6 @@ export default function Navbar() {
                 alt="Panel Guys Logo"
                 className={cn(
                   "h-full w-auto object-contain transition-all duration-300",
-                  // If your logo is dark, this makes it white when the nav is transparent
                   !isScrolled && "brightness-0 invert",
                 )}
               />

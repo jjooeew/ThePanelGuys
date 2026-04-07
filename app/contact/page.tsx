@@ -2,17 +2,8 @@
 
 import { useForm } from "react-hook-form";
 import { motion } from "motion/react";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Send,
-  CheckCircle2,
-  ArrowRight,
-} from "lucide-react";
-import { CONTACT_INFO } from "../constants";
-import { FormEvent, useState } from "react";
+import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from "lucide-react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -20,17 +11,42 @@ type FormData = {
   name: string;
   email: string;
   phone: string;
-  company: string;
-  projectType: string;
+  // projectType: string;
   message: string;
 };
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormData>();
+
+  const onSubmit = async (data: FormData) => {
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setSubmitted(true);
+      reset();
+    } catch (error) {
+      setSubmitError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -50,8 +66,7 @@ export default function Contact() {
             </h1>
             <p className="text-xl text-gray-400 leading-relaxed">
               Whether you're looking for a new build, an upgrade, or urgent
-              repairs, we're here to help. Fill out the form or give us a
-              call.
+              repairs, we're here to help. Fill out the form or give us a call.
             </p>
           </motion.div>
         </div>
@@ -106,9 +121,7 @@ export default function Contact() {
                       <h3 className="font-bold text-navy-900 uppercase tracking-widest text-sm mb-1">
                         Service Area
                       </h3>
-                      <p className="text-lg text-slate-600">
-                        Greater Auckland
-                      </p>
+                      <p className="text-lg text-slate-600">Greater Auckland</p>
                     </div>
                   </div>
 
@@ -158,43 +171,75 @@ export default function Contact() {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                      <label
+                        htmlFor="name"
+                        className="text-xs font-bold uppercase tracking-widest text-slate-500"
+                      >
                         Name
                       </label>
                       <input
-                        required
+                        id="name"
+                        {...register("name", { required: "Name is required" })}
                         type="text"
                         placeholder="Your Name"
                         className="w-full px-4 py-3 rounded border border-slate-300 focus:border-navy-900 focus:ring-1 focus:ring-navy-900 outline-none transition-all"
                       />
+                      {errors.name && (
+                        <p className="text-red-600 text-sm">
+                          {errors.name.message}
+                        </p>
+                      )}
                     </div>
+
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                      <label
+                        htmlFor="phone"
+                        className="text-xs font-bold uppercase tracking-widest text-slate-500"
+                      >
                         Phone Number
                       </label>
                       <input
-                        required
+                        id="phone"
+                        {...register("phone", {
+                          required: "Phone number is required",
+                        })}
                         type="tel"
-                        placeholder="0400 000 000"
+                        placeholder="020 000 0000"
                         className="w-full px-4 py-3 rounded border border-slate-300 focus:border-navy-900 focus:ring-1 focus:ring-navy-900 outline-none transition-all"
                       />
+                      {errors.phone && (
+                        <p className="text-red-600 text-sm">
+                          {errors.phone.message}
+                        </p>
+                      )}
                     </div>
                   </div>
+
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <label
+                      htmlFor="email"
+                      className="text-xs font-bold uppercase tracking-widest text-slate-500"
+                    >
                       Email Address
                     </label>
                     <input
-                      required
+                      id="email"
+                      {...register("email", { required: "Email is required" })}
                       type="email"
                       placeholder="email@example.com"
                       className="w-full px-4 py-3 rounded border border-slate-300 focus:border-navy-900 focus:ring-1 focus:ring-navy-900 outline-none transition-all"
                     />
+                    {errors.email && (
+                      <p className="text-red-600 text-sm">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
-                  <div className="space-y-2">
+
+                  {/* <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
                       Project Type
                     </label>
@@ -205,24 +250,43 @@ export default function Contact() {
                       <option>Commercial Upgrade</option>
                       <option>Other</option>
                     </select>
-                  </div>
+                  </div> */}
+
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <label
+                      htmlFor="message"
+                      className="text-xs font-bold uppercase tracking-widest text-slate-500"
+                    >
                       Message / Project Details
                     </label>
                     <textarea
-                      required
+                      id="message"
+                      {...register("message", {
+                        required: "A rundown of your requirements is required",
+                      })}
                       rows={5}
                       placeholder="Tell us about your requirements..."
                       className="w-full px-4 py-3 rounded border border-slate-300 focus:border-navy-900 focus:ring-1 focus:ring-navy-900 outline-none transition-all"
                     ></textarea>
+                    {errors.message && (
+                      <p className="text-red-600 text-sm">
+                        {errors.message.message}
+                      </p>
+                    )}
                   </div>
+
+                  {submitError && (
+                    <p className="text-red-600 text-sm font-medium">
+                      {submitError}
+                    </p>
+                  )}
                   <button
                     type="submit"
+                    disabled={isSubmitting}
                     className="w-full bg-navy-900 text-white py-4 rounded font-bold text-lg hover:bg-navy-800 transition-all shadow-lg flex items-center justify-center"
                   >
-                    Request a Quote
-                    <ArrowRight className="ml-2" size={20} />
+                    {isSubmitting ? "Sending..." : "Request a Quote"}
+                    {!isSubmitting && <ArrowRight className="ml-2" size={20} />}
                   </button>
                   <p className="text-center text-xs text-slate-400 uppercase tracking-widest">
                     We usually respond within 24 hours
