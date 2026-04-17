@@ -135,9 +135,9 @@ export const PROJECTS = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Robert Chen',
-    role: 'Operations Manager, Global Logistics',
-    content: 'The Panels Guys delivered our facility ahead of schedule. The precision of their temperature control is unmatched in the industry.',
+    name: 'Simon Roadley',
+    role: 'Manly Park Kitchen',
+    content: 'Grant and his team have been great to work with. Over the course of several successful projects, their exceptional workmanship has stood out, demonstrating both skill and attention to detail. Grant and his team work diligently and efficiently to deliver the project on time. He is flexible and cooperative when there are design amendments during the build with a "no problems, we will sort it" attitude.',
   },
   {
     name: 'Sarah Jenkins',
