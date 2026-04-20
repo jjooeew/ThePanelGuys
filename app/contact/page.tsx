@@ -160,8 +160,8 @@ export default function Contact() {
                     Message Sent!
                   </h2>
                   <p className="text-slate-600 text-lg mb-8">
-                    Thanks for reaching out. We will get back to you as soon
-                    as possible.
+                    Thanks for reaching out. We will get back to you as soon as
+                    possible.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -251,6 +251,14 @@ export default function Contact() {
                       <option>Other</option>
                     </select>
                   </div> */}
+
+                  <input
+                    type="text"
+                    name="company"
+                    style={{ display: "none" }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
 
                   <div className="space-y-2">
                     <label

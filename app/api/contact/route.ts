@@ -8,11 +8,23 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, email, phone, message } = body;
 
+    if (!email.includes("@")) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
+
+    if (message.length < 10) {
+      return NextResponse.json({ error: "Message too short" }, { status: 400 });
+    }
+
     if (!name || !email || !phone || !message) {
       return NextResponse.json(
         { success: false, message: "Missing required fields." },
         { status: 400 },
       );
+    }
+
+    if (body.company) {
+      return NextResponse.json({ success: true }); // silently ignore
     }
 
     const { data, error } = await resend.emails.send({
