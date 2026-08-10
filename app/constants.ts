@@ -1,180 +1,144 @@
-import { ReactNode } from 'react';
-import { 
-  Snowflake, 
-  Thermometer, 
-  Wrench, 
-  ShieldCheck, 
-  Clock, 
-  Settings, 
-  CheckCircle2,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  ArrowRight,
-  Menu,
-  X
-} from 'lucide-react';
-
 export const ROUTES = {
-  HOME: '/',
-  ABOUT: '/about',
-  PROJECTS: '/projects',
-  SERVICES: '/services',
-  CONTACT: '/contact',
+  HOME: "/",
+  PROJECTS: "/projects",
+  CONTACT: "/contact",
 };
 
 export const CONTACT_INFO = {
-  PHONE: '+1 (800) 555-0199',
-  EMAIL: 'info@thepanelguys.com',
-  ADDRESS: '123 Industrial Way, Auckland',
+  EMAIL: "info@thepanelguys.co.nz",
+  SERVICE_AREA: "Auckland, New Zealand",
 };
 
-export const SERVICES = [
+export const CAPABILITIES = [
   {
-    id: 'cool-rooms',
-    title: 'Custom Cool Rooms',
-    description: 'Precision-engineered walk-in refrigeration systems tailored to your specific space and temperature requirements.',
-    icon: Snowflake,
-        image: 'images/Manly-Park-Kitchen/13.jpg',
-
+    id: "cool-rooms",
+    number: "01",
+    title: "Commercial cool rooms",
+    description:
+      "Purpose-built insulated environments for refrigerated storage and reliable day-to-day access.",
+    project: "Sawmill Brewery",
+    image: "/images/Sawmill-Brewery/5.jpg",
   },
   {
-    id: 'freezers',
-    title: 'Industrial Scale Rooms',
-    description: 'Heavy-duty freezing solutions designed for long-term storage and maximum energy efficiency in commercial environments.',
-    icon: Thermometer,
-        image: 'images/Primor-Produce/40.jpg',
-
+    id: "production-environments",
+    number: "02",
+    title: "Production environments",
+    description:
+      "Panel systems shaped around active food-production workflows, cleanability, and movement through the space.",
+    project: "Manly Park Kitchen",
+    image: "/images/Manly-Park-Kitchen/17.jpg",
   },
   {
-    id: 'maintenance',
-    title: 'Repairs & Maintenance',
-    description: '24/7 emergency support and scheduled preventative maintenance to keep your operations running without interruption.',
-    icon: Wrench,
-    image: 'images/Primor-Produce/43.jpg',
-  },
-];
-
-export const WHY_CHOOSE_US = [
-  {
-    title: 'Decades of Experience',
-    description: 'Over 25 years of specialized engineering in commercial refrigeration.',
-    icon: Settings,
-  },
-  {
-    title: 'Full Compliance',
-    description: 'All installations meet or exceed local health and safety regulations.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Fast Installation',
-    description: 'Streamlined processes to minimize downtime for your business.',
-    icon: Clock,
-  },
-  {
-    title: 'Custom Solutions',
-    description: 'No space is too complex for our design and engineering team.',
-    icon: CheckCircle2,
+    id: "large-format-enclosures",
+    number: "03",
+    title: "Large-format enclosures",
+    description:
+      "Controlled rooms at warehouse scale for produce, healthcare, and distribution operations.",
+    project: "Primor Produce",
+    image: "/images/Primor-Produce/40.jpg",
   },
 ];
 
 export const PROJECTS = [
   {
     id: 1,
-    title: 'Sawmill Brewery',
-    category: 'Food',
-    location: 'Auckland, NZ',
-    image: '/images/Sawmill-Brewery/5.jpg',
+    title: "Sawmill Brewery",
+    category: "Brewery storage",
+    location: "Auckland, New Zealand",
+    image: "/images/Sawmill-Brewery/5.jpg",
     gallery: [
-      '/images/Sawmill-Brewery/5.jpg',
-      '/images/Sawmill-Brewery/8.jpg',
+      "/images/Sawmill-Brewery/5.jpg",
+      "/images/Sawmill-Brewery/8.jpg",
     ],
-    description: 'A 50,000 sq ft multi-temperature facility with advanced climate control.',
-    duration: '6 months',
+    description:
+      "A high-volume refrigerated storage environment integrated into the brewery's distribution operation.",
   },
   {
     id: 2,
-    title: 'Manly Park Kitchen',
-    category: 'Food',
-    location: 'Auckland, NZ',
-    image: '/images/Manly-Park-Kitchen/13.jpg',
+    title: "Manly Park Kitchen",
+    category: "Food production",
+    location: "Auckland, New Zealand",
+    image: "/images/Manly-Park-Kitchen/17.jpg",
     gallery: [
-      '/images/Manly-Park-Kitchen/13.jpg',
-      '/images/Manly-Park-Kitchen/17.jpg',
+      "/images/Manly-Park-Kitchen/17.jpg",
+      "/images/Manly-Park-Kitchen/13.jpg",
     ],
-    description: 'Custom kitchen walk-ins and wine cellar refrigeration systems.',
-    duration: '4 months',
+    description:
+      "A temperature-controlled commercial kitchen environment supporting active meal preparation and storage.",
   },
   {
     id: 3,
-    title: 'Healthcare Logistics',
-    category: 'Health',
-    location: 'Auckland, NZ',
-    image: '/images/Healthcare-Logistics/21.jpg',
+    title: "Healthcare Logistics",
+    category: "Healthcare logistics",
+    location: "Auckland, New Zealand",
+    image: "/images/Healthcare-Logistics/21.jpg",
     gallery: [
-      '/images/Healthcare-Logistics/21.jpg',
-      '/images/Healthcare-Logistics/22.jpg',
+      "/images/Healthcare-Logistics/21.jpg",
+      "/images/Healthcare-Logistics/22.jpg",
     ],
-    description: 'Energy-efficient display cool rooms and back-of-house storage.',
-    duration: '5 months',
+    description:
+      "Tall insulated storage areas integrated into a working healthcare logistics warehouse.",
   },
   {
     id: 4,
-    title: 'Aroa Biosurgery',
-    category: 'Health',
-    location: 'Auckland, NZ',
-    image: '/images/Aroa-Biosurgery/28.jpg',
-    gallery: [
-      '/images/Aroa-Biosurgery/28.jpg',
-    ],
-    description: 'Ultra-precise temperature controlled rooms for sensitive medical storage.',
-    duration: '3 months',
+    title: "Aroa Biosurgery",
+    category: "Controlled environment",
+    location: "Auckland, New Zealand",
+    image: "/images/Aroa-Biosurgery/28.jpg",
+    gallery: ["/images/Aroa-Biosurgery/28.jpg"],
+    description:
+      "A clean controlled corridor lined with insulated panel rooms and clearly defined access points.",
   },
   {
     id: 5,
-    title: 'Primor Produce',
-    category: 'Food',
-    location: 'Auckland, NZ',
-    image: '/images/Primor-Produce/43.jpg',
+    title: "Primor Produce",
+    category: "Produce distribution",
+    location: "Auckland, New Zealand",
+    image: "/images/Primor-Produce/40.jpg",
     gallery: [
-      '/images/Primor-Produce/43.jpg',
-      '/images/Primor-Produce/34.jpg',
-      '/images/Primor-Produce/40.jpg',
-      '/images/Primor-Produce/43.jpg',
-      '/images/Primor-Produce/45.jpg',
+      "/images/Primor-Produce/40.jpg",
+      "/images/Primor-Produce/34-tidied.png",
+      "/images/Primor-Produce/45.jpg",
+      "/images/Primor-Produce/43.jpg",
     ],
-    description: 'High-capacity blast freezers and processing area cooling.',
-    duration: '7 months',
+    description:
+      "A large insulated produce environment with multiple access points and room to operate at warehouse scale.",
   },
-  // {
-  //   id: 6,
-  //   title: 'Artisan Bakery Chain',
-  //   category: 'Food Service',
-  //   location: 'Portland, OR',
-  //   image: 'https://picsum.photos/seed/proj6/1200/800',
-  //   description: 'Dough retardation rooms and climate-controlled ingredient storage.',
-  // },
+  {
+    id: 6,
+    title: "Gilmores",
+    category: "Food distribution",
+    location: "Auckland, New Zealand",
+    image: "/images/Gilmores/68.jpg",
+    gallery: [
+      "/images/Gilmores/68.jpg",
+      "/images/Gilmores/69.jpg",
+      "/images/Gilmores/70.jpg",
+      "/images/Gilmores/71.jpg",
+    ],
+    description:
+      "A large insulated enclosure built within an active food distribution warehouse.",
+  },
+  {
+    id: 7,
+    title: "Tokyo Foods",
+    category: "Food distribution",
+    location: "Auckland, New Zealand",
+    image: "/images/Tokyo-Foods/63.jpg",
+    gallery: [
+      "/images/Tokyo-Foods/63.jpg",
+      "/images/Tokyo-Foods/64.jpg",
+    ],
+    description:
+      "Tall controlled storage integrated with high-density warehouse racking.",
+  },
 ];
 
 export const TESTIMONIALS = [
   {
-    name: 'Simon Roadley',
-    role: 'Manly Park Kitchen',
-    content: 'Grant and his team have been great to work with. Over the course of several successful projects, their exceptional workmanship has stood out, demonstrating both skill and attention to detail. Grant and his team work diligently and efficiently to deliver the project on time. He is flexible and cooperative when there are design amendments during the build with a "no problems, we will sort it" attitude.',
-  },
-  {
-    name: 'Sarah Jenkins',
-    role: 'Executive Chef, The Gilded Table',
-    content: 'Our custom walk-in is a work of art. Reliable, easy to clean, and perfectly integrated into our kitchen workflow.',
-  },
-  {
-    name: 'Michael Rossi',
-    role: 'Director, Fresh Foods Market',
-    content: 'The energy savings alone paid for the installation within 18 months. Their maintenance team is incredibly responsive.',
+    name: "Simon Roadley",
+    role: "Manly Park Kitchen",
+    content:
+      'Grant and his team have been great to work with. Over the course of several successful projects, their exceptional workmanship has stood out, demonstrating both skill and attention to detail. Grant and his team work diligently and efficiently to deliver the project on time. He is flexible and cooperative when there are design amendments during the build with a "no problems, we will sort it" attitude.',
   },
 ];
-

@@ -1,140 +1,175 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Snowflake } from "lucide-react";
-import { ROUTES, CONTACT_INFO } from "../constants";
-import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { ROUTES } from "../constants";
+
+const navigation = [
+  { label: "Work", href: ROUTES.PROJECTS },
+  { label: "Capabilities", href: "/#capabilities" },
+  { label: "Contact", href: ROUTES.CONTACT },
+];
+
+function PanelMark() {
+  return (
+    <span
+      aria-hidden="true"
+      className="relative block h-8 w-7 shrink-0 border-2 border-graphite"
+    >
+      <span className="absolute inset-y-0 left-[7px] w-px bg-graphite" />
+      <span className="absolute right-[4px] top-1/2 h-1 w-1 -translate-y-1/2 bg-panelguys-blue" />
+    </span>
+  );
+}
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (!isOpen) return;
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    // { name: 'About', path: ROUTES.ABOUT },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen]);
+
+  const isCurrent = (href: string) => {
+    if (href === ROUTES.PROJECTS) return pathname.startsWith(ROUTES.PROJECTS);
+    if (href === ROUTES.CONTACT) return pathname === ROUTES.CONTACT;
+    return false;
+  };
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md py-3 shadow-md border-b border-gray-200"
-          : "bg-transparent py-6",
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="relative h-25 w-auto aspect-[3/1]">
-              {" "}
-              {/* Adjust aspect ratio to match your logo */}
-              <img
-                src="/images/logo-no-bg.png" // Replace with your actual filename & extension
-                alt="Panel Guys Logo"
-                className={cn(
-                  "h-full w-auto object-contain transition-all duration-300",
-                  !isScrolled && "brightness-0 invert",
-                )}
-              />
-            </div>
-          </Link>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-stainless/60 bg-panel-white text-graphite">
+      <nav
+        aria-label="Primary navigation"
+        className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-16"
+      >
+        <Link
+          href={ROUTES.HOME}
+          aria-label="The Panel Guys home"
+          onClick={() => setIsOpen(false)}
+          className="group flex min-h-11 items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-panelguys-blue focus-visible:ring-offset-4 focus-visible:ring-offset-panel-white"
+        >
+          <PanelMark />
+          <span className="font-display text-[1.05rem] font-bold uppercase leading-[0.88] tracking-[-0.015em] sm:text-lg">
+            The Panel
+            <span className="block text-panelguys-blue">Guys</span>
+          </span>
+        </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.path}
-                className={cn(
-                  "text-sm font-semibold uppercase tracking-widest transition-colors hover:text-steel-blue",
-                  location === link.path
-                    ? "text-steel-blue"
-                    : isScrolled
-                      ? "text-charcoal"
-                      : "text-white",
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              href={ROUTES.CONTACT}
-              className="bg-steel-blue hover:bg-steel-blue-dark text-white px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-steel-blue/20"
-            >
-              Request Quote
-            </Link>
-          </div>
+        <div className="hidden items-center self-stretch md:flex">
+          <ul className="flex h-full items-center" role="list">
+            {navigation.map((item) => {
+              const current = isCurrent(item.href);
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={cn(
-                "p-2 rounded-md transition-colors",
-                isScrolled ? "text-charcoal" : "text-white",
-              )}
-            >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
+              return (
+                <li key={item.label} className="h-full">
+                  <Link
+                    href={item.href}
+                    aria-current={current ? "page" : undefined}
+                    className="group relative flex h-full items-center px-5 font-display text-xs font-semibold uppercase tracking-[0.16em] outline-none transition-colors duration-300 hover:text-panelguys-blue focus-visible:bg-graphite focus-visible:text-panel-white lg:px-6"
+                  >
+                    {item.label}
+                    <span
+                      aria-hidden="true"
+                      className={`absolute inset-x-5 bottom-0 h-0.5 bg-panelguys-blue transition-transform duration-300 lg:inset-x-6 ${
+                        current
+                          ? "scale-x-100"
+                          : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-gray-200 overflow-hidden"
+          <Link
+            href={ROUTES.CONTACT}
+            className="ml-4 inline-flex min-h-11 items-center bg-panelguys-blue px-5 font-display text-xs font-bold uppercase tracking-[0.14em] text-graphite outline-none transition-colors duration-300 hover:bg-graphite hover:text-panel-white focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-panel-white lg:ml-6 lg:px-6"
           >
-            <div className="px-4 pt-4 pb-6 space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "block px-3 py-4 text-base font-bold uppercase tracking-widest border-b border-gray-50",
-                    location === link.path
-                      ? "text-steel-blue"
-                      : "text-charcoal",
-                  )}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="pt-4">
-                <Link
-                  href={ROUTES.CONTACT}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center bg-steel-blue text-white px-6 py-4 rounded-lg font-bold uppercase tracking-widest"
-                >
-                  Request Quote
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+            Discuss a project
+            <span aria-hidden="true" className="ml-3">
+              {"\u2192"}
+            </span>
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setIsOpen((open) => !open)}
+          className="relative flex h-11 w-11 items-center justify-center border border-graphite bg-transparent outline-none transition-colors hover:bg-graphite hover:text-panel-white focus-visible:ring-2 focus-visible:ring-panelguys-blue focus-visible:ring-offset-2 focus-visible:ring-offset-panel-white md:hidden"
+        >
+          <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
+          <span aria-hidden="true" className="relative block h-4 w-5">
+            <span
+              className={`absolute left-0 top-0 h-px w-5 bg-current transition-transform duration-300 motion-reduce:transition-none ${
+                isOpen ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[7px] h-px w-5 bg-current transition-opacity duration-300 motion-reduce:transition-none ${
+                isOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute bottom-0 left-0 h-px w-5 bg-current transition-transform duration-300 motion-reduce:transition-none ${
+                isOpen ? "-translate-y-[8px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
+      </nav>
+
+      {isOpen && (
+        <div
+          id="mobile-navigation"
+          className="border-t border-stainless/60 bg-panel-white px-5 pb-6 pt-2 md:hidden"
+        >
+          <ul role="list" className="mx-auto max-w-[1440px]">
+            {navigation.map((item, index) => {
+              const current = isCurrent(item.href);
+
+              return (
+                <li key={item.label} className="border-b border-stainless/60">
+                  <Link
+                    href={item.href}
+                    aria-current={current ? "page" : undefined}
+                    onClick={() => setIsOpen(false)}
+                    className="flex min-h-14 items-center justify-between py-3 font-display text-xl font-semibold outline-none transition-colors hover:text-panelguys-blue focus-visible:bg-graphite focus-visible:px-3 focus-visible:text-panel-white"
+                  >
+                    <span>{item.label}</span>
+                    <span
+                      aria-hidden="true"
+                      className="font-sans text-[0.65rem] font-medium tabular-nums tracking-[0.16em] text-stainless"
+                    >
+                      0{index + 1}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <Link
+            href={ROUTES.CONTACT}
+            onClick={() => setIsOpen(false)}
+            className="mx-auto mt-6 flex min-h-12 max-w-[1440px] items-center justify-between bg-panelguys-blue px-5 font-display text-sm font-bold uppercase tracking-[0.14em] text-graphite outline-none transition-colors hover:bg-graphite hover:text-panel-white focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-panel-white"
+          >
+            Discuss a project <span aria-hidden="true">{"\u2192"}</span>
+          </Link>
+        </div>
+      )}
+    </header>
   );
 }
