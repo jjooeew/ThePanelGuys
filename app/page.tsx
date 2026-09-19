@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import { CAPABILITIES, PROJECTS, ROUTES, TESTIMONIALS } from "./constants";
+import { CAPABILITIES, CONTACT_INFO, PROJECTS, ROUTES, TESTIMONIALS } from "./constants";
 
 const projectById = (id: number) => {
   const project = PROJECTS.find((item) => item.id === id);
@@ -46,21 +46,20 @@ export default function Home() {
         <div className="casebook-container grid min-h-[calc(100svh-8rem)] gap-12 pb-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-20">
           <div className="lg:col-span-5 lg:pr-8">
             <p className="eyebrow mb-8 flex items-center gap-3 text-graphite/65">
-              <span className="h-px w-10 bg-panelguys-blue" />
-              Insulated environments / Auckland
+              <span className="h-px w-10 shrink-0 bg-brand-navy" />
+              Chiller & freezer construction
             </p>
             <h1 className="text-balance max-w-[10ch] text-[clamp(3.4rem,7.2vw,7.25rem)] leading-[0.87]">
-              Commercial cool rooms, built precisely.
+              Custom cool rooms & freezers, built precisely.
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-graphite/72 md:text-xl">
-              The Panel Guys builds insulated cold rooms and controlled
-              environments for food production, healthcare, and distribution
-              businesses across Auckland.
+              We design and construct commercial cool rooms and freezers, with
+              repairs and maintenance available from {CONTACT_INFO.SERVICE_AREA}.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
               <Link
                 href={ROUTES.CONTACT}
-                className="focus-ring inline-flex min-h-12 items-center bg-panelguys-blue px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.11em] text-graphite transition-colors hover:bg-white"
+                className="button-primary focus-ring inline-flex min-h-12 items-center px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.11em] transition-colors"
               >
                 Discuss a project <span className="ml-4" aria-hidden="true">→</span>
               </Link>
@@ -193,18 +192,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="capabilities" className="scroll-mt-24 bg-graphite py-24 text-panel-white md:py-32" aria-labelledby="capabilities-heading">
+      <section id="capabilities" className="scroll-mt-28 bg-brand-navy py-24 text-panel-white md:py-32" aria-labelledby="capabilities-heading">
         <div className="casebook-container">
           <header className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-7">
-              <p className="eyebrow mb-5 text-panelguys-blue">Capabilities</p>
+              <p className="eyebrow mb-5 text-stainless">Capabilities</p>
               <h2 id="capabilities-heading" className="text-balance max-w-[11ch] text-5xl leading-[0.95] md:text-7xl">
-                Built around the work inside.
+                From a custom build to ongoing care.
               </h2>
             </div>
             <p className="max-w-md self-end text-lg leading-8 text-panel-white/65 md:col-span-5">
-              From compact production rooms to warehouse-scale enclosures, the
-              panel system is planned around access, hygiene, storage, and flow.
+              Cool rooms, freezers and storage rooms for commercial clients.
+              We build new spaces and carry out repairs and maintenance on
+              existing enclosures, from {CONTACT_INFO.SERVICE_AREA}.
             </p>
           </header>
 
@@ -214,18 +214,15 @@ export default function Home() {
                 key={capability.id}
                 className="grid gap-5 border-t border-white/20 py-8 md:grid-cols-12 md:items-start md:py-10"
               >
-                <span className="font-display text-sm font-semibold text-panelguys-blue md:col-span-1">
+                <span className="font-display text-sm font-semibold text-stainless md:col-span-1">
                   {capability.number}
                 </span>
                 <h3 className="text-3xl leading-none md:col-span-4 md:text-4xl">
                   {capability.title}
                 </h3>
-                <p className="max-w-xl text-base leading-7 text-panel-white/65 md:col-span-5">
+                <p className="max-w-xl text-base leading-7 text-panel-white/75 md:col-span-6 md:col-start-7">
                   {capability.description}
                 </p>
-                <span className="font-display text-sm uppercase tracking-[0.1em] text-panel-white/50 md:col-span-2 md:text-right">
-                  {capability.project}
-                </span>
               </div>
             ))}
           </div>
@@ -327,18 +324,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-panelguys-blue py-16 md:py-20">
+      <section className="bg-brand-navy py-16 text-white md:py-20">
         <div className="casebook-container grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <p className="eyebrow mb-5 text-graphite/60">Start a conversation</p>
+            <p className="eyebrow mb-5 text-stainless">{CONTACT_INFO.SERVICE_AREA}</p>
             <h2 className="text-balance max-w-[13ch] text-5xl leading-[0.92] md:text-7xl">
-              Planning a controlled environment?
+              A new room, or work on an existing one?
             </h2>
           </div>
           <div className="md:col-span-4 md:text-right">
             <Link
               href={ROUTES.CONTACT}
-              className="focus-ring inline-flex min-h-12 items-center border border-graphite bg-graphite px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.11em] text-white transition-colors hover:bg-white hover:text-graphite"
+              className="focus-ring inline-flex min-h-12 items-center border border-white bg-white px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.11em] text-brand-navy transition-colors hover:bg-panel-white"
             >
               Discuss your project <span className="ml-4" aria-hidden="true">→</span>
             </Link>

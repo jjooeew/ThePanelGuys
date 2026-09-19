@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useForm } from "react-hook-form";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { CONTACT_INFO } from "../constants";
 
 type FormData = {
   name: string;
@@ -16,7 +17,7 @@ type FormData = {
 };
 
 const fieldClassName =
-  "w-full rounded-none border-0 border-b border-[#A7B0B4] bg-transparent px-0 py-4 text-base text-[#11161A] outline-none transition-colors placeholder:text-[#667177] focus:border-[#11161A] focus:ring-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#267CAC] disabled:cursor-not-allowed disabled:opacity-60";
+  "w-full rounded-none border-0 border-b border-[#A7B0B4] bg-transparent px-0 py-4 text-base text-[#11161A] outline-none transition-colors placeholder:text-[#667177] focus:border-[#11161A] focus:ring-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy disabled:cursor-not-allowed disabled:opacity-60";
 
 const labelClassName =
   "font-display text-xs font-semibold uppercase tracking-[0.18em] text-[#4C575D]";
@@ -83,18 +84,18 @@ export default function Contact() {
               className="col-span-4 lg:col-span-7 lg:pr-12"
             >
               <p className="mb-8 flex items-center gap-4 font-display text-xs font-semibold uppercase tracking-[0.22em] text-[#A7B0B4]">
-                <span className="h-px w-10 bg-[#50B5ED]" aria-hidden="true" />
+                <span className="h-px w-10 bg-stainless" aria-hidden="true" />
                 Project enquiries
               </p>
 
               <h1 className="max-w-[820px] font-display text-[clamp(3.4rem,7.4vw,7rem)] font-semibold leading-[0.88] tracking-[-0.045em]">
-                Tell us what you&apos;re building.
+                Tell us what you need.
               </h1>
 
               <p className="mt-8 max-w-2xl text-lg leading-8 text-[#D6DCDE] sm:text-xl">
-                Share the site, programme, and what the controlled environment
-                needs to do. We&apos;ll review the brief and discuss the right next
-                step with you.
+                Planning a custom cool room or freezer, or arranging repairs and
+                maintenance? Share your location and what you need. We work with
+                commercial clients from {CONTACT_INFO.SERVICE_AREA}.
               </p>
             </motion.div>
 
@@ -123,10 +124,10 @@ export default function Contact() {
                   </dt>
                   <dd>
                     <a
-                      href="mailto:info@thepanelguys.co.nz"
-                      className="break-all text-base text-white decoration-[#50B5ED] decoration-2 underline-offset-4 transition-colors hover:text-[#50B5ED] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#50B5ED] sm:text-lg"
+                      href={`mailto:${CONTACT_INFO.EMAIL}`}
+                      className="break-all text-base text-white decoration-stainless decoration-2 underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg"
                     >
-                      info@thepanelguys.co.nz
+                      {CONTACT_INFO.EMAIL}
                     </a>
                   </dd>
                 </div>
@@ -135,7 +136,7 @@ export default function Contact() {
                     Service area
                   </dt>
                   <dd className="text-base text-white sm:text-lg">
-                    Greater Auckland
+                    {CONTACT_INFO.SERVICE_AREA}
                   </dd>
                 </div>
               </dl>
@@ -153,15 +154,15 @@ export default function Contact() {
                 Start with the practical detail.
               </h2>
               <p className="mt-6 max-w-md text-base leading-7 text-[#4C575D]">
-                A useful first note includes the site location, how the space
-                will be used, your timing, and any drawings or photographs you
-                already have.
+                Include the site location, whether you need a new room or work
+                on an existing one, and your preferred timing. Let us know if
+                you have drawings or photographs to share.
               </p>
 
               <div className="mt-12 hidden border-t border-[#A7B0B4] pt-5 lg:block">
                 <p className="max-w-xs font-display text-sm font-medium leading-6 text-[#4C575D]">
-                  New installations, alterations, or work within an existing
-                  controlled environment.
+                  Custom cool rooms, freezers and storage rooms. Repairs and
+                  maintenance for existing enclosures.
                 </p>
               </div>
             </aside>
@@ -188,7 +189,7 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="mt-10 inline-flex min-h-11 items-center gap-3 border-b-2 border-[#11161A] pb-1 font-display text-sm font-semibold uppercase tracking-[0.15em] transition-colors hover:border-[#50B5ED] hover:text-[#267CAC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#267CAC]"
+                    className="mt-10 inline-flex min-h-11 items-center gap-3 border-b-2 border-[#11161A] pb-1 font-display text-sm font-semibold uppercase tracking-[0.15em] transition-colors hover:border-brand-navy hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy"
                   >
                     Send another enquiry
                     <ArrowRight size={17} aria-hidden="true" />
@@ -304,7 +305,7 @@ export default function Contact() {
                     <textarea
                       id="message"
                       rows={6}
-                      placeholder="Tell us about the site, intended use, timing, and anything we should know."
+                      placeholder="Where is the site? What would you like built, repaired or maintained, and when?"
                       aria-invalid={errors.message ? "true" : "false"}
                       aria-describedby={
                         errors.message ? "message-error" : "message-note"
@@ -353,10 +354,10 @@ export default function Contact() {
                     >
                       {submitError}{" "}
                       <a
-                        href="mailto:info@thepanelguys.co.nz"
+                        href={`mailto:${CONTACT_INFO.EMAIL}`}
                         className="underline decoration-1 underline-offset-4 hover:text-[#11161A]"
                       >
-                        info@thepanelguys.co.nz
+                        {CONTACT_INFO.EMAIL}
                       </a>
                     </p>
                   )}
@@ -368,7 +369,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex min-h-12 w-full items-center justify-between gap-8 rounded-[2px] bg-[#50B5ED] px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] text-[#11161A] transition-colors hover:bg-[#79C8F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#267CAC] disabled:cursor-wait disabled:bg-[#A7B0B4] sm:w-auto sm:min-w-56"
+                      className="button-primary inline-flex min-h-12 w-full items-center justify-between gap-8 rounded-[2px] px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy disabled:cursor-wait sm:w-auto sm:min-w-56"
                     >
                       <span>{isSubmitting ? "Sending enquiry" : "Send enquiry"}</span>
                       <ArrowRight

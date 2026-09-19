@@ -5,24 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { ROUTES } from "../constants";
+import BrandLogo from "./BrandLogo";
 
 const navigation = [
   { label: "Work", href: ROUTES.PROJECTS },
   { label: "Capabilities", href: "/#capabilities" },
   { label: "Contact", href: ROUTES.CONTACT },
 ];
-
-function PanelMark() {
-  return (
-    <span
-      aria-hidden="true"
-      className="relative block h-8 w-7 shrink-0 border-2 border-graphite"
-    >
-      <span className="absolute inset-y-0 left-[7px] w-px bg-graphite" />
-      <span className="absolute right-[4px] top-1/2 h-1 w-1 -translate-y-1/2 bg-panelguys-blue" />
-    </span>
-  );
-}
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -46,22 +35,18 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-stainless/60 bg-panel-white text-graphite">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-stainless/60 bg-white text-brand-navy">
       <nav
         aria-label="Primary navigation"
-        className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-16"
+        className="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between px-5 sm:h-[104px] sm:px-8 lg:px-16"
       >
         <Link
           href={ROUTES.HOME}
           aria-label="The Panel Guys home"
           onClick={() => setIsOpen(false)}
-          className="group flex min-h-11 items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-panelguys-blue focus-visible:ring-offset-4 focus-visible:ring-offset-panel-white"
+          className="focus-ring block shrink-0"
         >
-          <PanelMark />
-          <span className="font-display text-[1.05rem] font-bold uppercase leading-[0.88] tracking-[-0.015em] sm:text-lg">
-            The Panel
-            <span className="block text-panelguys-blue">Guys</span>
-          </span>
+          <BrandLogo priority className="w-40 sm:w-44" />
         </Link>
 
         <div className="hidden items-center self-stretch md:flex">
@@ -74,12 +59,12 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     aria-current={current ? "page" : undefined}
-                    className="group relative flex h-full items-center px-5 font-display text-xs font-semibold uppercase tracking-[0.16em] outline-none transition-colors duration-300 hover:text-panelguys-blue focus-visible:bg-graphite focus-visible:text-panel-white lg:px-6"
+                    className="group relative flex h-full items-center px-4 font-display text-xs font-semibold uppercase tracking-[0.16em] outline-none transition-colors duration-300 hover:text-brand-steel focus-visible:bg-brand-navy focus-visible:text-white lg:px-6"
                   >
                     {item.label}
                     <span
                       aria-hidden="true"
-                      className={`absolute inset-x-5 bottom-0 h-0.5 bg-panelguys-blue transition-transform duration-300 lg:inset-x-6 ${
+                      className={`absolute inset-x-4 bottom-0 h-0.5 bg-brand-navy transition-transform duration-300 lg:inset-x-6 ${
                         current
                           ? "scale-x-100"
                           : "scale-x-0 group-hover:scale-x-100"
@@ -93,7 +78,7 @@ export default function Navbar() {
 
           <Link
             href={ROUTES.CONTACT}
-            className="ml-4 inline-flex min-h-11 items-center bg-panelguys-blue px-5 font-display text-xs font-bold uppercase tracking-[0.14em] text-graphite outline-none transition-colors duration-300 hover:bg-graphite hover:text-panel-white focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-panel-white lg:ml-6 lg:px-6"
+            className="button-primary ml-4 inline-flex min-h-11 items-center px-5 font-display text-xs font-bold uppercase tracking-[0.14em] outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2 lg:ml-6 lg:px-6"
           >
             Discuss a project
             <span aria-hidden="true" className="ml-3">
@@ -108,7 +93,7 @@ export default function Navbar() {
           aria-controls="mobile-navigation"
           aria-label={isOpen ? "Close navigation" : "Open navigation"}
           onClick={() => setIsOpen((open) => !open)}
-          className="relative flex h-11 w-11 items-center justify-center border border-graphite bg-transparent outline-none transition-colors hover:bg-graphite hover:text-panel-white focus-visible:ring-2 focus-visible:ring-panelguys-blue focus-visible:ring-offset-2 focus-visible:ring-offset-panel-white md:hidden"
+          className="relative flex h-11 w-11 items-center justify-center border border-brand-navy bg-transparent outline-none transition-colors hover:bg-brand-navy hover:text-white focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2 md:hidden"
         >
           <span className="sr-only">{isOpen ? "Close menu" : "Open menu"}</span>
           <span aria-hidden="true" className="relative block h-4 w-5">
@@ -134,7 +119,7 @@ export default function Navbar() {
       {isOpen && (
         <div
           id="mobile-navigation"
-          className="border-t border-stainless/60 bg-panel-white px-5 pb-6 pt-2 md:hidden"
+          className="border-t border-stainless/60 bg-white px-5 pb-6 pt-2 md:hidden"
         >
           <ul role="list" className="mx-auto max-w-[1440px]">
             {navigation.map((item, index) => {
@@ -146,12 +131,12 @@ export default function Navbar() {
                     href={item.href}
                     aria-current={current ? "page" : undefined}
                     onClick={() => setIsOpen(false)}
-                    className="flex min-h-14 items-center justify-between py-3 font-display text-xl font-semibold outline-none transition-colors hover:text-panelguys-blue focus-visible:bg-graphite focus-visible:px-3 focus-visible:text-panel-white"
+                    className="flex min-h-14 items-center justify-between py-3 font-display text-xl font-semibold outline-none transition-colors hover:text-brand-steel focus-visible:bg-brand-navy focus-visible:px-3 focus-visible:text-white"
                   >
                     <span>{item.label}</span>
                     <span
                       aria-hidden="true"
-                      className="font-sans text-[0.65rem] font-medium tabular-nums tracking-[0.16em] text-stainless"
+                      className="font-sans text-[0.65rem] font-medium tabular-nums tracking-[0.16em] text-brand-steel"
                     >
                       0{index + 1}
                     </span>
@@ -164,7 +149,7 @@ export default function Navbar() {
           <Link
             href={ROUTES.CONTACT}
             onClick={() => setIsOpen(false)}
-            className="mx-auto mt-6 flex min-h-12 max-w-[1440px] items-center justify-between bg-panelguys-blue px-5 font-display text-sm font-bold uppercase tracking-[0.14em] text-graphite outline-none transition-colors hover:bg-graphite hover:text-panel-white focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-panel-white"
+            className="button-primary mx-auto mt-6 flex min-h-12 max-w-[1440px] items-center justify-between px-5 font-display text-sm font-bold uppercase tracking-[0.14em] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2"
           >
             Discuss a project <span aria-hidden="true">{"\u2192"}</span>
           </Link>

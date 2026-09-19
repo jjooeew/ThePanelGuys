@@ -101,7 +101,7 @@ export default function Projects() {
                 >
                   <Link
                     href={`/projects/${leadProject.id}`}
-                    className="underline decoration-transparent underline-offset-8 transition-colors hover:decoration-[#50b5ed] focus-visible:outline-none focus-visible:decoration-[#50b5ed]"
+                    className="underline decoration-transparent underline-offset-8 transition-colors hover:decoration-brand-navy focus-visible:outline-none focus-visible:decoration-brand-navy"
                   >
                     {leadProject.title}
                   </Link>
@@ -111,7 +111,7 @@ export default function Projects() {
                 </p>
                 <Link
                   href={`/projects/${leadProject.id}`}
-                  className="mt-7 inline-flex min-h-11 items-center border-b border-[#11161a] font-display text-sm font-semibold uppercase tracking-[0.16em] outline-none transition-colors hover:border-[#50b5ed] hover:text-[#11161a]/65 focus-visible:ring-2 focus-visible:ring-[#11161a]"
+                  className="mt-7 inline-flex min-h-11 items-center border-b border-[#11161a] font-display text-sm font-semibold uppercase tracking-[0.16em] outline-none transition-colors hover:border-brand-navy hover:text-[#11161a]/65 focus-visible:ring-2 focus-visible:ring-[#11161a]"
                 >
                   View project <span aria-hidden="true" className="ml-3">↗</span>
                 </Link>
@@ -193,7 +193,7 @@ export default function Projects() {
                     >
                       <Link
                         href={`/projects/${project.id}`}
-                        className="underline decoration-transparent underline-offset-8 transition-colors hover:decoration-[#50b5ed] focus-visible:outline-none focus-visible:decoration-[#50b5ed]"
+                        className="underline decoration-transparent underline-offset-8 transition-colors hover:decoration-brand-navy focus-visible:outline-none focus-visible:decoration-brand-navy"
                       >
                         {project.title}
                       </Link>
@@ -203,7 +203,7 @@ export default function Projects() {
                     </p>
                     <Link
                       href={`/projects/${project.id}`}
-                      className="mt-7 inline-flex min-h-11 items-center border-b border-[#11161a] font-display text-sm font-semibold uppercase tracking-[0.16em] outline-none transition-colors hover:border-[#50b5ed] hover:text-[#11161a]/65 focus-visible:ring-2 focus-visible:ring-[#11161a]"
+                      className="mt-7 inline-flex min-h-11 items-center border-b border-[#11161a] font-display text-sm font-semibold uppercase tracking-[0.16em] outline-none transition-colors hover:border-brand-navy hover:text-[#11161a]/65 focus-visible:ring-2 focus-visible:ring-[#11161a]"
                     >
                       View project <span aria-hidden="true" className="ml-3">↗</span>
                     </Link>
@@ -225,7 +225,7 @@ export default function Projects() {
               </h2>
               <Link
                 href="/contact"
-                className="mt-9 inline-flex min-h-12 items-center bg-[#50b5ed] px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.16em] text-[#11161a] outline-none transition-colors hover:bg-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#11161a]"
+                className="mt-9 inline-flex min-h-12 items-center bg-white px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.16em] text-brand-navy outline-none transition-colors hover:bg-panel-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#11161a]"
               >
                 Discuss a project <span aria-hidden="true" className="ml-4">→</span>
               </Link>

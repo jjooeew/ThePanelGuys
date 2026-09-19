@@ -6,36 +6,30 @@ export const ROUTES = {
 
 export const CONTACT_INFO = {
   EMAIL: "info@thepanelguys.co.nz",
-  SERVICE_AREA: "Auckland, New Zealand",
+  SERVICE_AREA: "Northland to Taupō",
 };
 
 export const CAPABILITIES = [
   {
-    id: "cool-rooms",
+    id: "cool-rooms-freezers",
     number: "01",
-    title: "Commercial cool rooms",
+    title: "Cool rooms & freezers",
     description:
-      "Purpose-built insulated environments for refrigerated storage and reliable day-to-day access.",
-    project: "Sawmill Brewery",
-    image: "/images/Sawmill-Brewery/5.jpg",
+      "Design and construction of custom cool rooms and freezers for commercial clients, shaped around the space and how it will be used.",
   },
   {
-    id: "production-environments",
+    id: "custom-storage-rooms",
     number: "02",
-    title: "Production environments",
+    title: "Custom storage rooms",
     description:
-      "Panel systems shaped around active food-production workflows, cleanability, and movement through the space.",
-    project: "Manly Park Kitchen",
-    image: "/images/Manly-Park-Kitchen/17.jpg",
+      "Purpose-built insulated panel rooms for commercial storage, with the layout planned around your site, access and working requirements.",
   },
   {
-    id: "large-format-enclosures",
+    id: "repairs-maintenance",
     number: "03",
-    title: "Large-format enclosures",
+    title: "Repairs & maintenance",
     description:
-      "Controlled rooms at warehouse scale for produce, healthcare, and distribution operations.",
-    project: "Primor Produce",
-    image: "/images/Primor-Produce/40.jpg",
+      "Repair and maintenance work for existing cool-room and freezer enclosures. Tell us what needs attention and we can discuss the scope.",
   },
 ];
 

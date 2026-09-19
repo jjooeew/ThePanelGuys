@@ -120,7 +120,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 </p>
                 <Link
                   href="/contact"
-                  className="mt-9 inline-flex min-h-12 items-center bg-[#50b5ed] px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.16em] text-[#11161a] outline-none transition-colors hover:bg-white focus-visible:ring-2 focus-visible:ring-[#11161a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#f2f4f2]"
+                  className="mt-9 inline-flex min-h-12 items-center button-primary px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.16em] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#11161a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#f2f4f2]"
                 >
                   Discuss a project <span aria-hidden="true" className="ml-4">→</span>
                 </Link>
@@ -267,7 +267,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 <span className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#11161a]/50">
                   ← Previous project
                 </span>
-                <span className="mt-4 block font-display text-3xl font-semibold leading-none tracking-[-0.02em] underline decoration-transparent underline-offset-8 transition-colors group-hover:decoration-[#50b5ed] group-focus-visible:decoration-[#50b5ed] sm:text-4xl">
+                <span className="mt-4 block font-display text-3xl font-semibold leading-none tracking-[-0.02em] underline decoration-transparent underline-offset-8 transition-colors group-hover:decoration-brand-navy group-focus-visible:decoration-brand-navy sm:text-4xl">
                   {previousProject.title}
                 </span>
               </Link>
@@ -279,7 +279,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 <span className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#11161a]/50">
                   Next project →
                 </span>
-                <span className="mt-4 block font-display text-3xl font-semibold leading-none tracking-[-0.02em] underline decoration-transparent underline-offset-8 transition-colors group-hover:decoration-[#50b5ed] group-focus-visible:decoration-[#50b5ed] sm:text-4xl">
+                <span className="mt-4 block font-display text-3xl font-semibold leading-none tracking-[-0.02em] underline decoration-transparent underline-offset-8 transition-colors group-hover:decoration-brand-navy group-focus-visible:decoration-brand-navy sm:text-4xl">
                   {nextProject.title}
                 </span>
               </Link>
@@ -297,7 +297,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 </h2>
                 <Link
                   href="/contact"
-                  className="mt-9 inline-flex min-h-12 items-center bg-[#50b5ed] px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.16em] text-[#11161a] outline-none transition-colors hover:bg-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#11161a]"
+                  className="mt-9 inline-flex min-h-12 items-center bg-white px-6 py-3 font-display text-sm font-semibold uppercase tracking-[0.16em] text-brand-navy outline-none transition-colors hover:bg-panel-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#11161a]"
                 >
                   Contact The Panel Guys <span aria-hidden="true" className="ml-4">→</span>
                 </Link>

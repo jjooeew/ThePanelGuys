@@ -17,9 +17,9 @@ const body = IBM_Plex_Sans({
   display: "swap",
 });
 
-const title = "The Panel Guys | Commercial Cool Room Specialists";
+const title = "The Panel Guys | Custom Cool Rooms & Freezers";
 const description =
-  "Specialist commercial cool rooms and insulated environments for Auckland food production, healthcare, and distribution businesses.";
+  "Custom commercial cool rooms, freezers and storage rooms. Design, construction, repairs and maintenance from Northland to Taupō.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -44,10 +44,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       images: [
         {
-          url: "/og.png",
-          width: 1731,
-          height: 909,
-          alt: "The Panel Guys — commercial cool rooms, built precisely",
+          url: "/brand/the-panel-guys.png",
+          width: 1536,
+          height: 1024,
+          alt: "The Panel Guys Ltd — Chiller & Freezer Construction",
         },
       ],
     },
@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og.png"],
+      images: ["/brand/the-panel-guys.png"],
     },
   };
 }

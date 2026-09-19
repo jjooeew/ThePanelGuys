@@ -7,14 +7,13 @@
   --color-graphite: #11161a;
   --color-panel-white: #f2f4f2;
   --color-stainless: #a7b0b4;
-  --color-panelguys-blue: #50b5ed;
+  --color-brand-navy: #062747;
+  --color-brand-steel: #5d6265;
   --color-navy-900: #11161a;
   --color-navy-800: #222a2f;
   --color-navy-700: #3b454a;
   --color-muted-grey: #e8ebea;
   --color-charcoal: #11161a;
-  --color-steel-blue: #50b5ed;
-  --color-steel-blue-dark: #2796d1;
 }
 
 :root {
@@ -59,7 +58,41 @@ button {
 }
 
 ::selection {
-  background: var(--color-panelguys-blue);
+  background: var(--color-brand-navy);
+  color: #fff;
+}
+
+/* Display the supplied full lockup, trimming only its outer blank margins.
+   Keep the artwork intact until the client's vector/compact assets arrive. */
+.brand-logo {
+  position: relative;
+  display: block;
+  aspect-ratio: 1400 / 640;
+  overflow: hidden;
+  background: #fff;
+}
+
+.brand-logo-image {
+  position: absolute;
+  width: 109.7143%;
+  max-width: none;
+  height: auto;
+  left: -5%;
+  top: -29.6875%;
+}
+
+.button-primary {
+  background: var(--color-brand-navy);
+  color: #fff;
+}
+
+.button-primary:hover {
+  background: var(--color-graphite);
+  color: #fff;
+}
+
+.button-primary:disabled {
+  background: var(--color-stainless);
   color: var(--color-graphite);
 }
 
@@ -83,8 +116,9 @@ button {
 }
 
 .focus-ring:focus-visible {
-  outline: 3px solid var(--color-panelguys-blue);
-  outline-offset: 4px;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--color-brand-navy);
 }
 
 .panel-rule {

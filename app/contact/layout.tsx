@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Discuss a Project",
   description:
-    "Tell The Panel Guys about your Auckland commercial cool-room or insulated-environment project.",
+    "Discuss custom commercial cool rooms, freezers, storage rooms, repairs and maintenance with The Panel Guys. Serving Northland to Taupō.",
 };
 
 export default function ContactLayout({

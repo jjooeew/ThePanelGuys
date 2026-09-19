@@ -1,6 +1,6 @@
 # The Panel Guys — Design Direction
 
-Status: proposed design direction after discovery. This file governs the redesign; it is not an implementation specification and does not approve unverified marketing claims.
+Status: implemented direction, updated with the client-supplied branding and business copy on 19 September 2026. This file governs the redesign and does not approve unverified marketing claims. The discovery audit below records the original site; current content decisions and outstanding confirmations are tracked in `docs/content-status.md`.
 
 ## North star
 
@@ -14,7 +14,7 @@ The design must pass this test: if the words and photographs were replaced, coul
 
 ## Business position
 
-Present The Panel Guys as a capable, precise, professional specialist contractor for commercial cool rooms, insulated panel environments, food production, healthcare, and logistics.
+Present The Panel Guys as a capable, precise, professional specialist contractor designing and constructing custom commercial cool rooms, freezers and storage rooms, with repairs and maintenance from Northland to Taupō. Use the completed food, healthcare and logistics work as proof; do not infer refrigeration-equipment servicing or compliance certifications from it.
 
 The tone is matter-of-fact and confident. Prefer evidence to adjectives: completed work, named clients, clear scope, real operating environments, project facts, and one attributable testimonial. Do not claim scale, duration, coverage, response times, years of experience, compliance, savings, or availability until the business confirms them.
 
@@ -50,8 +50,11 @@ Use a controlled, high-contrast palette derived from the current logo and the in
 - **Graphite** `#11161A` — primary text and dark fields.
 - **Panel white** `#F2F4F2` — primary background; slightly warmer than pure white.
 - **Stainless** `#A7B0B4` — rules, secondary data, and quiet surfaces.
-- **Panel Guys blue** `#50B5ED` — the single brand accent. Pair it with graphite text when used as a filled control; do not put small white text on this blue.
-- **Pure white** `#FFFFFF` — limited to clean contrast and form surfaces.
+- **Brand navy** `#062747` — primary actions and selected dark fields, derived visually from the new supplied logo, not claimed as an official colour specification. Use white text on navy controls.
+- **Brand steel** `#5D6265` — supporting text and restrained interactions.
+- **Pure white** `#FFFFFF` — clean contrast, logo grounds and form surfaces. Keep the opaque supplied logo on white.
+
+The previous bright blue accent has been retired. Use stainless or white for labels and focus indicators on dark fields; navy belongs on light surfaces and as a background, not as small text on graphite.
 
 Do not introduce decorative gradients. Safety yellow, orange racking, red doors, teal steel, and product colour should remain powerful accents inside the photography rather than becoming competing UI tokens.
 
@@ -103,7 +106,7 @@ Keep the homepage to six purposeful sections. Completed work appears early and r
 
 Use an asymmetric split hero: a graphite or panel-white text plane on the left and Sawmill Brewery `5.jpg` as a tall image on the right. Include a clear H1, one short positioning paragraph, one primary CTA (`Discuss a project` or verified equivalent), and a small project caption. Do not add a second filled CTA, scroll mouse, badge, stat, or decorative snowflake.
 
-The copy should establish the actual work, for example: specialist commercial cool rooms and insulated-panel environments for Auckland food, healthcare, and logistics businesses. Final wording must be verified.
+The copy should establish custom commercial cool rooms and freezers, construction, repairs and maintenance, and coverage from Northland to Taupō. Do not broaden this to the whole North Island.
 
 ### 2. Proof — selected environments
 
@@ -117,7 +120,7 @@ Each item needs only verified project name, sector, location/scope, and a direct
 
 ### 3. Capabilities — a concise scope register
 
-Present capabilities as ruled typographic rows, not icon cards. Each row should connect a real service to a real project image or project reference. Current service labels require business verification; likely groups are commercial cool rooms/freezers, insulated production or controlled environments, and repair/maintenance.
+Present capabilities as ruled typographic rows, not icon cards. The client-supported groups are cool rooms and freezers, custom storage rooms, and repairs and maintenance. Do not attach a named project to a service unless its scope is verified; the questionnaire does not identify repair or freezer work by project.
 
 ### 4. Deeper proof — Primor Produce case-study excerpt
 
@@ -143,14 +146,14 @@ Finish with a compact enquiry band that states service area, real response chann
 
 - Use a compact, solid navigation bar on panel white or graphite with a one-pixel lower rule. Avoid oversized transparent navigation and blur-heavy glass effects.
 - Primary navigation: `Work`, `Capabilities` (page or homepage anchor), and `Contact`. Add pages only when they contain real content.
-- Use a clean vector/transparent redraw of the existing panel-door symbol and wordmark. The current raster logo is not suitable as a navigation asset.
+- Use the client-supplied full logo in `public/brand/the-panel-guys.png`, on white, with only outer blank margins trimmed in CSS. Preserve its artwork, proportions and tagline. Replace it with matching vector/transparent or compact assets when supplied; do not invent a replacement mark.
 - The primary navigation action is a squared text/button treatment: `Discuss a project →`.
 - The footer should contain only the verified logo/wordmark, navigation, legal links that exist, and real contact details. Remove placeholder social icons and dead links.
 
 ## Buttons and links
 
 - Default corner radius: 0–2 px.
-- Primary action: Panel Guys blue fill with graphite text, medium weight, and a directional arrow.
+- Primary action: brand navy fill with white text, medium weight, and a directional arrow. On navy fields, use the white inverse with navy text.
 - Secondary action: text link with an underline or rule that extends on hover. Do not create a second filled button beside the primary action above the fold.
 - Project links should make the image and title jointly clickable, with a visible keyboard focus state.
 - Avoid pills, badges, icon boxes, inflated shadows, and hover effects that hide essential content until pointer interaction.
@@ -175,7 +178,7 @@ Finish with a compact enquiry band that states service area, real response chann
 ## Existing elements to preserve
 
 - The Panel Guys name and the panel/door motif in the logo.
-- The bright blue brand cue, refined into one controlled accent.
+- The new client-supplied navy/grey logo, replacing the earlier bright blue brand cue.
 - All real project photography, retained as original source material.
 - Named project/client material, once verified.
 - Simon Roadley's testimonial.
@@ -190,7 +193,7 @@ Finish with a compact enquiry band that states service area, real response chann
 - Replace Inter/Outfit with the defined typography system.
 - Reduce the number of blues/navies to the controlled palette.
 - Rebuild the project index and detail pages around each photograph's native orientation and project depth.
-- Redraw the logo as a clean vector/transparent asset; do not use the existing glowing raster in navigation.
+- Retire the old glowing logo and temporary panel-door mark. Use the newly supplied full logo; request original vector assets rather than redrawing it without approval.
 - Consolidate and verify all business details before launch.
 
 ## Discovery audit and limitations
@@ -230,7 +233,7 @@ Finish with a compact enquiry band that states service area, real response chann
 4. Add Gilmores and Tokyo Foods to the project inventory if approved, with concise scope notes.
 5. Request 3–6 additional images for Aroa Biosurgery and at least one exterior/context, detail, and in-progress image for future case studies.
 6. Obtain Simon Roadley's correct title/organisation and approval for the testimonial wording.
-7. Obtain or recreate a flat vector logo and define the exact approved brand blue.
+7. Obtain original vector, transparent, reversed and compact versions of the newly supplied logo, plus any official colour specifications. The supplied raster is the interim source of truth.
 8. If possible, commission one short photography pass focused on completed wide establishing shots, square-on panel/door details, installers at work, and consistent before/after viewpoints.
 
 ## Non-negotiable anti-generic rules
