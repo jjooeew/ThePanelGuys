@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Panel Guys
 
-## Getting Started
+Next.js website hosted on Vercel. Project content is maintained in a data file;
+photographs are served with the website. No database or client admin is required.
 
-First, run the development server:
+## Development
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Updating projects
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Edit `PROJECTS` in `app/constants.ts`: name, category, location, description,
+  cover image and gallery paths. Keep existing IDs to preserve project URLs.
+- Place photographs in `public/images/<project-name>/` and reference them as
+  `/images/<project-name>/<filename>`. These are hosted by Vercel with the site;
+  no separate storage account is needed for launch.
+- `lib/projects.ts` supplies image dimensions and display ordering (Primor first).
+  Update its dimensions mapping for any new image sizes, especially portraits.
+- Preview changes, then use the existing GitHub → Vercel deployment workflow.
+  Future project changes need a data/photo update and deployment, not an admin login.
 
-## Learn More
+## Contact form
 
-To learn more about Next.js, take a look at the following resources:
+Copy the variable names in `.env.example` into local/Vercel environment settings.
+Configure Resend with a verified sender and the correct recipient. Never commit
+credentials. Real email delivery needs a separately approved test.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Checks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+npm run lint
+node --test tests/*.test.mjs
+npm run build
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [launch checklist](docs/launch-checklist.md) and
+[content status](docs/content-status.md) for remaining handover items.

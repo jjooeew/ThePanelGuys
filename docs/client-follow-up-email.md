@@ -1,5 +1,7 @@
 # Client follow-up email — draft, not sent
 
+> Archived: superseded by Joe's confirmations on 20 September and Grant's 21 September emails. Joe is preparing his own email. See `content-status.md` for current facts; do not send this draft.
+
 **Subject:** The Panel Guys website — final details for launch
 
 Hi team,

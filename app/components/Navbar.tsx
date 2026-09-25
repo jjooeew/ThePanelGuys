@@ -38,7 +38,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-stainless/60 bg-white text-brand-navy">
       <nav
         aria-label="Primary navigation"
-        className="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between px-5 sm:h-[104px] sm:px-8 lg:px-16"
+        className="mx-auto flex h-[104px] max-w-[1440px] items-center justify-between px-5 sm:h-[120px] sm:px-8 lg:px-16"
       >
         <Link
           href={ROUTES.HOME}
@@ -46,7 +46,7 @@ export default function Navbar() {
           onClick={() => setIsOpen(false)}
           className="focus-ring block shrink-0"
         >
-          <BrandLogo priority className="w-40 sm:w-44" />
+          <BrandLogo priority className="w-48 sm:w-56" />
         </Link>
 
         <div className="hidden items-center self-stretch md:flex">

@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { PROJECTS } from "../constants";
+import { getProjects } from "@/lib/projects";
+import type { Project, ProjectImage } from "@/lib/project-types";
 
 export const metadata: Metadata = {
   title: "Completed Work",
@@ -12,39 +13,15 @@ export const metadata: Metadata = {
     "Explore completed commercial cool-room and insulated-panel environments by The Panel Guys.",
 };
 
-const PORTRAIT_IMAGES = new Set([
-  "/images/Sawmill-Brewery/5.jpg",
-  "/images/Healthcare-Logistics/21.jpg",
-  "/images/Healthcare-Logistics/22.jpg",
-  "/images/Aroa-Biosurgery/28.jpg",
-  "/images/Tokyo-Foods/63.jpg",
-  "/images/Tokyo-Foods/64.jpg",
-]);
-
-function getImageDimensions(src: string) {
-  if (PORTRAIT_IMAGES.has(src)) {
-    return { width: 3024, height: 4032 };
-  }
-
-  if (src.endsWith("34-tidied.png")) {
-    return { width: 1536, height: 1024 };
-  }
-
-  return { width: 4032, height: 3024 };
-}
-
-function getProjectCaption(project: (typeof PROJECTS)[number]) {
+function getProjectCaption(project: Project) {
   return [project.category, project.location].filter(Boolean).join(" / ");
 }
 
 export default function Projects() {
-  const primorIndex = PROJECTS.findIndex(
-    (project) => project.title === "Primor Produce",
+  const projects = getProjects().filter(
+    (project): project is Project & { image: ProjectImage } => project.image !== null,
   );
-  const leadProject = PROJECTS[primorIndex >= 0 ? primorIndex : 0];
-  const remainingProjects = PROJECTS.filter(
-    (project) => project.id !== leadProject?.id,
-  );
+  const [leadProject, ...remainingProjects] = projects;
 
   return (
     <div className="min-h-screen bg-[#f2f4f2] text-[#11161a]">
@@ -68,6 +45,16 @@ export default function Projects() {
           </div>
         </header>
 
+        {projects.length === 0 && (
+          <section className="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12">
+            <h2 className="font-display text-3xl font-semibold">More completed work to come.</h2>
+            <p className="mt-5 max-w-xl leading-7 text-[#11161a]/70">
+              We’re preparing our project photography. Contact us to discuss
+              your plans and examples of relevant work.
+            </p>
+          </section>
+        )}
+
         {leadProject && (
           <section
             aria-labelledby={`project-${leadProject.id}`}
@@ -81,9 +68,10 @@ export default function Projects() {
                   aria-label={`View ${leadProject.title} project`}
                 >
                   <Image
-                    src={leadProject.image}
-                    alt={`${leadProject.title} completed ${leadProject.category.toLowerCase()} environment`}
-                    {...getImageDimensions(leadProject.image)}
+                    src={leadProject.image.src}
+                    alt={leadProject.image.alt}
+                    width={leadProject.image.width}
+                    height={leadProject.image.height}
                     priority
                     sizes="(min-width: 1024px) 72vw, 100vw"
                     className="h-auto w-full bg-[#d9dedd] object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.01]"
@@ -123,8 +111,7 @@ export default function Projects() {
         <section aria-label="More completed projects">
           <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
             {remainingProjects.map((project, index) => {
-              const imageDimensions = getImageDimensions(project.image);
-              const isPortrait = imageDimensions.height > imageDimensions.width;
+              const isPortrait = project.image.height > project.image.width;
               const alignRight = index % 2 === 1;
               const wide = !isPortrait && index % 4 === 0;
               const imageColumns = wide
@@ -165,9 +152,10 @@ export default function Projects() {
                       aria-label={`View ${project.title} project`}
                     >
                       <Image
-                        src={project.image}
-                        alt={`${project.title} completed ${project.category.toLowerCase()} environment`}
-                        {...imageDimensions}
+                        src={project.image.src}
+                        alt={project.image.alt}
+                        width={project.image.width}
+                        height={project.image.height}
                         sizes={
                           isPortrait
                             ? "(min-width: 1024px) 42vw, 100vw"

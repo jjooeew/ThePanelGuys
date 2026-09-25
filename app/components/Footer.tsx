@@ -22,7 +22,7 @@ export default function Footer() {
               aria-label="The Panel Guys home"
               className="focus-ring inline-block bg-white p-4"
             >
-              <BrandLogo className="w-56 sm:w-64" />
+              <BrandLogo className="w-60 sm:w-72" />
             </Link>
             <p className="mt-7 max-w-md font-sans text-base leading-relaxed text-panel-white/70 sm:text-lg">
               Custom cool rooms, freezers and storage rooms. Construction,

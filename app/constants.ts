@@ -5,8 +5,11 @@ export const ROUTES = {
 };
 
 export const CONTACT_INFO = {
-  EMAIL: "info@thepanelguys.co.nz",
+  EMAIL: "enquiry@thepanelguys.co.nz",
+  HOURS: "4 am–6 pm",
+  WORKING_DAYS: "6 days a week",
   SERVICE_AREA: "Northland to Taupō",
+  PHONE: "021 272 9858",
 };
 
 export const CAPABILITIES = [

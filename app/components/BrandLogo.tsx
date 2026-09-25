@@ -15,7 +15,7 @@ export default function BrandLogo({
         width={1536}
         height={1024}
         priority={priority}
-        sizes="(min-width: 768px) 320px, 240px"
+        sizes="(min-width: 640px) 320px, 264px"
         className="brand-logo-image"
       />
     </span>

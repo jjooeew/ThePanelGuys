@@ -2,24 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import { CAPABILITIES, CONTACT_INFO, PROJECTS, ROUTES, TESTIMONIALS } from "./constants";
+import { CAPABILITIES, CONTACT_INFO, ROUTES, TESTIMONIALS } from "./constants";
+import { getProjects } from "@/lib/projects";
+import type { Project, ProjectImage } from "@/lib/project-types";
 
-const projectById = (id: number) => {
-  const project = PROJECTS.find((item) => item.id === id);
-  if (!project) throw new Error(`Missing project ${id}`);
-  return project;
-};
-
-const primor = projectById(5);
-const healthcare = projectById(3);
-const aroa = projectById(4);
 const testimonial = TESTIMONIALS[0];
 
 function ProjectCaption({
   project,
   index,
 }: {
-  project: (typeof PROJECTS)[number];
+  project: Project;
   index: string;
 }) {
   return (
@@ -38,13 +31,25 @@ function ProjectCaption({
 }
 
 export default function Home() {
+  const projects = getProjects().filter(
+    (project): project is Project & { image: ProjectImage } => project.image !== null,
+  );
+  const hero = projects.find((project) => project.id === 1) ?? projects[0];
+  const primor = projects.find((project) => project.id === 5);
+  const healthcare = projects.find((project) => project.id === 3);
+  const aroa = projects.find((project) => project.id === 4);
+  const manly = projects.find((project) => project.id === 2);
+  const primorSupportingImage = primor?.gallery.find(
+    (image) => image.src !== primor.image.src,
+  );
+
   return (
     <main>
       <Navbar />
 
-      <section className="border-b panel-rule pt-28 lg:pt-32">
+      <section className="border-b panel-rule pt-32 sm:pt-36 lg:pt-40">
         <div className="casebook-container grid min-h-[calc(100svh-8rem)] gap-12 pb-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pb-20">
-          <div className="lg:col-span-5 lg:pr-8">
+          <div className={hero ? "lg:col-span-5 lg:pr-8" : "lg:col-span-9"}>
             <p className="eyebrow mb-8 flex items-center gap-3 text-graphite/65">
               <span className="h-px w-10 shrink-0 bg-brand-navy" />
               Chiller & freezer construction
@@ -73,16 +78,16 @@ export default function Home() {
             </div>
           </div>
 
-          <figure className="lg:col-span-7 lg:ml-auto lg:w-[min(100%,40rem)]">
+          {hero && <figure className="lg:col-span-7 lg:ml-auto lg:w-[min(100%,40rem)]">
             <Link
-              href="/projects/1"
+              href={`/projects/${hero.id}`}
               className="focus-ring group block overflow-hidden bg-graphite"
-              aria-label="View the Sawmill Brewery project"
+              aria-label={`View the ${hero.title} project`}
             >
-              <div className="panel-reveal relative aspect-[3/4] overflow-hidden">
+              <div className="panel-reveal relative overflow-hidden" style={{ aspectRatio: `${hero.image.width} / ${hero.image.height}` }}>
                 <Image
-                  src="/images/Sawmill-Brewery/5.jpg"
-                  alt="Tall refrigerated storage aisle at Sawmill Brewery, lined with loaded pallet racking"
+                  src={hero.image.src}
+                  alt={hero.image.alt}
                   fill
                   priority
                   sizes="(min-width: 1024px) 45vw, 100vw"
@@ -92,17 +97,17 @@ export default function Home() {
             </Link>
             <div className="mt-4 flex items-start justify-between gap-6 border-t panel-rule pt-4 text-sm">
               <span className="font-display font-semibold uppercase tracking-[0.1em]">
-                Sawmill Brewery
+                {hero.title}
               </span>
               <span className="text-right text-graphite/60">
-                Brewery storage / Auckland
+                {hero.category} / {hero.location}
               </span>
             </div>
-          </figure>
+          </figure>}
         </div>
       </section>
 
-      <section className="py-24 md:py-32" aria-labelledby="selected-work-heading">
+      {(primor || healthcare || aroa) && <section className="py-24 md:py-32" aria-labelledby="selected-work-heading">
         <div className="casebook-container">
           <header className="grid gap-8 border-t panel-rule pt-6 md:grid-cols-12">
             <div className="md:col-span-7">
@@ -126,12 +131,12 @@ export default function Home() {
           </header>
 
           <div className="mt-16 grid gap-x-8 gap-y-20 lg:grid-cols-12">
-            <figure className="lg:col-span-7">
+            {primor && <figure className="lg:col-span-7">
               <Link href={`/projects/${primor.id}`} className="focus-ring group block overflow-hidden">
-                <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
+                <div className="relative overflow-hidden bg-graphite" style={{ aspectRatio: `${primor.image.width} / ${primor.image.height}` }}>
                   <Image
-                    src={primor.image}
-                    alt="Large Primor Produce controlled room with multiple doors, a forklift, and workers visible for scale"
+                    src={primor.image.src}
+                    alt={primor.image.alt}
                     fill
                     sizes="(min-width: 1024px) 58vw, 100vw"
                     className="image-zoom object-cover"
@@ -139,60 +144,59 @@ export default function Home() {
                 </div>
               </Link>
               <div className="mt-5"><ProjectCaption project={primor} index="01" /></div>
-            </figure>
+            </figure>}
 
-            <figure className="lg:col-span-5 lg:mt-24">
+            {healthcare && <figure className={`lg:col-span-5 ${primor ? "lg:mt-24" : ""}`}>
               <Link href={`/projects/${healthcare.id}`} className="focus-ring group block overflow-hidden">
-                <div className="relative aspect-[3/4] overflow-hidden bg-graphite">
+                <div className="relative overflow-hidden bg-graphite" style={{ aspectRatio: `${healthcare.image.width} / ${healthcare.image.height}` }}>
                   <Image
-                    src={healthcare.image}
-                    alt="Tall healthcare logistics warehouse aisle leading into an insulated storage area"
+                    src={healthcare.image.src}
+                    alt={healthcare.image.alt}
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="image-zoom object-cover"
                   />
                 </div>
               </Link>
-              <div className="mt-5"><ProjectCaption project={healthcare} index="02" /></div>
-            </figure>
+              <div className="mt-5"><ProjectCaption project={healthcare} index={primor ? "02" : "01"} /></div>
+            </figure>}
 
-            <div className="grid gap-8 border-t panel-rule pt-8 lg:col-span-12 lg:grid-cols-12 lg:items-end">
+            {aroa && <div className="grid gap-8 border-t panel-rule pt-8 lg:col-span-12 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-4 lg:col-start-2">
-                <p className="eyebrow mb-5 text-graphite/55">Controlled environments</p>
+                <p className="eyebrow mb-5 text-graphite/55">{aroa.category}</p>
                 <h3 className="text-balance text-4xl leading-none md:text-5xl">
-                  Precision beyond food storage.
+                  {aroa.title}
                 </h3>
                 <p className="mt-6 text-base leading-7 text-graphite/65">
-                  Clean panel junctions, repeated access points, and controlled
-                  circulation for specialist healthcare settings.
+                  {aroa.description}
                 </p>
                 <Link
                   href={`/projects/${aroa.id}`}
                   className="focus-ring mt-8 inline-block border-b border-graphite pb-1 font-display text-sm font-semibold uppercase tracking-[0.1em]"
                 >
-                  View Aroa Biosurgery ↗
+                  View {aroa.title} ↗
                 </Link>
               </div>
               <figure className="lg:col-span-5 lg:col-start-7">
                 <Link href={`/projects/${aroa.id}`} className="focus-ring group block overflow-hidden">
-                  <div className="relative aspect-[3/4] overflow-hidden bg-graphite">
+                  <div className="relative overflow-hidden bg-graphite" style={{ aspectRatio: `${aroa.image.width} / ${aroa.image.height}` }}>
                     <Image
-                      src={aroa.image}
-                      alt="Clean Aroa Biosurgery corridor with numbered insulated panel room doors"
+                      src={aroa.image.src}
+                      alt={aroa.image.alt}
                       fill
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       className="image-zoom object-cover"
                     />
                   </div>
                 </Link>
-                <div className="mt-5"><ProjectCaption project={aroa} index="03" /></div>
+                <div className="mt-5"><ProjectCaption project={aroa} index={String(1 + Number(Boolean(primor)) + Number(Boolean(healthcare))).padStart(2, "0")} /></div>
               </figure>
-            </div>
+            </div>}
           </div>
         </div>
-      </section>
+      </section>}
 
-      <section id="capabilities" className="scroll-mt-28 bg-brand-navy py-24 text-panel-white md:py-32" aria-labelledby="capabilities-heading">
+      <section id="capabilities" className="scroll-mt-36 bg-brand-navy py-24 text-panel-white md:py-32" aria-labelledby="capabilities-heading">
         <div className="casebook-container">
           <header className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-7">
@@ -229,28 +233,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 md:py-36" aria-labelledby="primor-heading">
+      {primor && <section className="py-24 md:py-36" aria-labelledby="primor-heading">
         <div className="casebook-container">
           <header className="grid gap-8 border-t panel-rule pt-6 md:grid-cols-12">
             <div className="md:col-span-8">
-              <p className="eyebrow mb-5 text-graphite/55">Project focus / Primor Produce</p>
+              <p className="eyebrow mb-5 text-graphite/55">Project focus / {primor.category}</p>
               <h2 id="primor-heading" className="text-balance max-w-[13ch] text-5xl leading-[0.95] md:text-7xl">
-                Room to keep a large operation moving.
+                {primor.title}
               </h2>
             </div>
             <p className="max-w-sm self-end text-base leading-7 text-graphite/65 md:col-span-4">
-              Multiple insulated environments sit within the active produce
-              facility, with generous access and clear working space around the
-              enclosure.
+              {primor.description}
             </p>
           </header>
         </div>
 
         <div className="mt-14 overflow-hidden bg-graphite">
-          <div className="relative aspect-[4/3] md:aspect-[16/8.7]">
+          <div className="relative" style={{ aspectRatio: `${primor.image.width} / ${primor.image.height}` }}>
             <Image
-              src="/images/Primor-Produce/40.jpg"
-              alt="Wide view across the large Primor Produce controlled environment"
+              src={primor.image.src}
+              alt={primor.image.alt}
               fill
               sizes="100vw"
               className="object-cover"
@@ -259,25 +261,25 @@ export default function Home() {
         </div>
 
         <div className="casebook-container mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
-          <figure className="lg:col-span-7">
-            <div className="relative aspect-[3/2] overflow-hidden bg-graphite">
+          {primorSupportingImage && <figure className="lg:col-span-7">
+            <div className="relative overflow-hidden bg-graphite" style={{ aspectRatio: `${primorSupportingImage.width} / ${primorSupportingImage.height}` }}>
               <Image
-                src="/images/Primor-Produce/34-tidied.png"
-                alt="Long white insulated-panel elevation at Primor Produce with blue high-speed doors and yellow safety barriers"
+                src={primorSupportingImage.src}
+                alt={primorSupportingImage.alt}
                 fill
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="object-cover"
               />
             </div>
             <figcaption className="mt-4 text-sm text-graphite/55">
-              Insulated elevation / high-speed access doors
+              {primorSupportingImage.alt}
             </figcaption>
-          </figure>
-          <div className="border-t panel-rule pt-6 lg:col-span-4 lg:col-start-9">
+          </figure>}
+          <div className={`border-t panel-rule pt-6 lg:col-span-4 ${primorSupportingImage ? "lg:col-start-9" : ""}`}>
             <p className="eyebrow mb-5 text-graphite/55">The visible result</p>
             <p className="text-xl leading-8 text-graphite/75">
-              Long, uninterrupted panel runs and clearly defined thresholds make
-              the scale of the completed enclosure legible at a glance.
+              See the completed {primor.category.toLowerCase()} project in
+              {" "}{primor.location}, including the project brief and photography.
             </p>
             <Link
               href={`/projects/${primor.id}`}
@@ -287,27 +289,27 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className="border-y panel-rule bg-white py-24 md:py-32" aria-labelledby="testimonial-heading">
         <div className="casebook-container grid gap-12 lg:grid-cols-12 lg:items-center">
-          <figure className="lg:col-span-7">
-            <div className="relative aspect-[4/3] overflow-hidden bg-graphite">
+          {manly && <figure className="lg:col-span-7">
+            <div className="relative overflow-hidden bg-graphite" style={{ aspectRatio: `${manly.image.width} / ${manly.image.height}` }}>
               <Image
-                src="/images/Manly-Park-Kitchen/17.jpg"
-                alt="Manly Park Kitchen team working inside the completed temperature-controlled production space"
+                src={manly.image.src}
+                alt={manly.image.alt}
                 fill
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="object-cover"
               />
             </div>
             <figcaption className="mt-4 flex justify-between gap-6 border-t panel-rule pt-4 text-sm">
-              <span className="font-display font-semibold uppercase tracking-[0.1em]">Manly Park Kitchen</span>
+              <span className="font-display font-semibold uppercase tracking-[0.1em]">{manly.title}</span>
               <span className="text-graphite/55">Completed environment in use</span>
             </figcaption>
-          </figure>
+          </figure>}
 
-          <div className="lg:col-span-5 lg:pl-10">
+          <div className={manly ? "lg:col-span-5 lg:pl-10" : "lg:col-span-9"}>
             <p className="eyebrow mb-8 text-graphite/55">Client perspective</p>
             <blockquote>
               <p id="testimonial-heading" className="font-display text-3xl font-medium leading-[1.08] md:text-4xl">
@@ -331,6 +333,10 @@ export default function Home() {
             <h2 className="text-balance max-w-[13ch] text-5xl leading-[0.92] md:text-7xl">
               A new room, or work on an existing one?
             </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
+              We provide prompt pricing and quotes, and can work with your
+              company during the planning phase if you need support.
+            </p>
           </div>
           <div className="md:col-span-4 md:text-right">
             <Link

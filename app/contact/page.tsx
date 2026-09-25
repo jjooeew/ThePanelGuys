@@ -62,10 +62,10 @@ export default function Contact() {
   const reveal = reduceMotion
     ? {}
     : {
-        initial: { opacity: 0, y: 24 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
-      };
+      initial: { opacity: 0, y: 24 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+    };
 
   return (
     <div className="min-h-screen bg-[#F2F4F2] text-[#11161A]">
@@ -105,10 +105,10 @@ export default function Contact() {
                 reduceMotion
                   ? undefined
                   : {
-                      duration: 0.55,
-                      delay: 0.12,
-                      ease: [0.22, 1, 0.36, 1],
-                    }
+                    duration: 0.55,
+                    delay: 0.12,
+                    ease: [0.22, 1, 0.36, 1],
+                  }
               }
               className="col-span-4 mt-14 border-t border-white/25 pt-6 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:border-t-0 lg:pl-12 lg:pt-14"
               aria-label="Contact details"
@@ -129,6 +129,30 @@ export default function Contact() {
                     >
                       {CONTACT_INFO.EMAIL}
                     </a>
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[7rem_1fr] gap-4 py-5">
+                  <dt className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-[#A7B0B4]">
+                    Phone
+                  </dt>
+                  <dd>
+                    <a
+                      href={`tel:${CONTACT_INFO.PHONE}`}
+                      className="break-all text-base text-white decoration-stainless decoration-2 underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:text-lg"
+                    >
+                      {CONTACT_INFO.PHONE}
+                    </a>
+                  </dd>
+                </div>
+                <div className="grid grid-cols-[7rem_1fr] gap-4 py-5">
+                  <dt className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-[#A7B0B4]">
+                    Hours
+                  </dt>
+                  <dd className="text-base text-white sm:text-lg">
+                    <span className="block">{CONTACT_INFO.HOURS}</span>
+                    <span className="mt-1 block text-sm text-[#D6DCDE]">
+                      {CONTACT_INFO.WORKING_DAYS}
+                    </span>
                   </dd>
                 </div>
                 <div className="grid grid-cols-[7rem_1fr] gap-4 py-5">
@@ -157,6 +181,11 @@ export default function Contact() {
                 Include the site location, whether you need a new room or work
                 on an existing one, and your preferred timing. Let us know if
                 you have drawings or photographs to share.
+              </p>
+              <p className="mt-5 max-w-md text-base leading-7 text-[#4C575D]">
+                We provide prompt pricing and quotes. If you are still in the
+                planning phase, we are happy to work with your company to help
+                define what is needed.
               </p>
 
               <div className="mt-12 hidden border-t border-[#A7B0B4] pt-5 lg:block">

@@ -5,52 +5,32 @@ import { notFound } from "next/navigation";
 
 import Footer from "@/app/components/Footer";
 import Navbar from "@/app/components/Navbar";
-import { PROJECTS } from "@/app/constants";
+import { getProject, getProjects } from "@/lib/projects";
+import type { Project } from "@/lib/project-types";
 
 type ProjectPageProps = {
   params: Promise<{ id: string }>;
 };
 
-const PORTRAIT_IMAGES = new Set([
-  "/images/Sawmill-Brewery/5.jpg",
-  "/images/Healthcare-Logistics/21.jpg",
-  "/images/Healthcare-Logistics/22.jpg",
-  "/images/Aroa-Biosurgery/28.jpg",
-  "/images/Tokyo-Foods/63.jpg",
-  "/images/Tokyo-Foods/64.jpg",
-]);
-
-function getImageDimensions(src: string) {
-  if (PORTRAIT_IMAGES.has(src)) {
-    return { width: 3024, height: 4032 };
-  }
-
-  if (src.endsWith("34-tidied.png")) {
-    return { width: 1536, height: 1024 };
-  }
-
-  return { width: 4032, height: 3024 };
+function parseProjectId(id: string) {
+  const projectId = Number(id);
+  return /^[1-9]\d*$/.test(id) && Number.isSafeInteger(projectId)
+    ? projectId
+    : null;
 }
 
-function findProject(id: string) {
-  return PROJECTS.find((project) => String(project.id) === id);
-}
-
-function getProjectCaption(project: (typeof PROJECTS)[number]) {
+function getProjectCaption(project: Project) {
   return [project.category, project.location].filter(Boolean).join(" / ");
-}
-
-export function generateStaticParams() {
-  return PROJECTS.map((project) => ({ id: String(project.id) }));
 }
 
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { id } = await params;
-  const project = findProject(id);
+  const projectId = parseProjectId(id);
+  const project = projectId === null ? null : getProject(projectId);
 
-  if (!project) {
+  if (!project?.image) {
     return { title: "Project not found" };
   }
 
@@ -62,22 +42,28 @@ export async function generateMetadata({
 
 export default async function ProjectDetail({ params }: ProjectPageProps) {
   const { id } = await params;
-  const project = findProject(id);
+  const projectId = parseProjectId(id);
+  if (projectId === null) notFound();
+  const project = getProject(projectId);
+  const projects = getProjects();
 
-  if (!project) {
+  if (!project?.image) {
     notFound();
   }
 
-  const projectIndex = PROJECTS.findIndex(
+  const visibleProjects = projects.filter((candidate) => candidate.image !== null);
+  const projectIndex = visibleProjects.findIndex(
     (candidate) => candidate.id === project.id,
   );
   const previousProject =
-    PROJECTS[(projectIndex - 1 + PROJECTS.length) % PROJECTS.length];
-  const nextProject = PROJECTS[(projectIndex + 1) % PROJECTS.length];
-  const supportingImages = Array.from(new Set(project.gallery)).filter(
-    (image) => image !== project.image,
+    visibleProjects[(projectIndex - 1 + visibleProjects.length) % visibleProjects.length];
+  const nextProject = visibleProjects[(projectIndex + 1) % visibleProjects.length];
+  const supportingImages = project.gallery.filter(
+    (image, index, images) =>
+      image.src !== project.image?.src &&
+      images.findIndex((candidate) => candidate.src === image.src) === index,
   );
-  const heroDimensions = getImageDimensions(project.image);
+  const showProjectNavigation = projectIndex >= 0 && visibleProjects.length > 1;
 
   return (
     <div className="min-h-screen bg-[#f2f4f2] text-[#11161a]">
@@ -115,7 +101,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 <h1 className="mt-6 font-display text-[clamp(3.2rem,6vw,6rem)] font-semibold leading-[0.88] tracking-[-0.04em]">
                   {project.title}
                 </h1>
-                <p className="mt-8 max-w-lg text-lg leading-8 text-[#11161a]/72">
+                <p className="mt-8 max-w-lg whitespace-pre-line text-lg leading-8 text-[#11161a]/72">
                   {project.description}
                 </p>
                 <Link
@@ -128,9 +114,10 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
 
               <figure className="col-span-4 lg:col-span-8 lg:col-start-5">
                 <Image
-                  src={project.image}
-                  alt={`${project.title} completed ${project.category.toLowerCase()} environment`}
-                  {...heroDimensions}
+                  src={project.image.src}
+                  alt={project.image.alt}
+                  width={project.image.width}
+                  height={project.image.height}
                   priority
                   sizes="(min-width: 1024px) 66vw, 100vw"
                   className="h-auto w-full bg-[#d9dedd] object-cover"
@@ -161,7 +148,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               </div>
 
               <div className="col-span-4 lg:col-span-5 lg:col-start-5">
-                <p className="text-xl leading-9 text-[#11161a]/78">
+                <p className="whitespace-pre-line text-xl leading-9 text-[#11161a]/78">
                   {project.description}
                 </p>
               </div>
@@ -209,13 +196,12 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
 
                 <div className="mt-12 space-y-16 sm:mt-16 sm:space-y-24">
                   {supportingImages.map((image, index) => {
-                    const dimensions = getImageDimensions(image);
-                    const isPortrait = dimensions.height > dimensions.width;
+                    const isPortrait = image.height > image.width;
                     const alignRight = index % 2 === 1;
 
                     return (
                       <figure
-                        key={image}
+                        key={image.src}
                         className="grid grid-cols-4 gap-x-5 lg:grid-cols-12 lg:gap-x-8"
                       >
                         <div
@@ -230,9 +216,10 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                           }`}
                         >
                           <Image
-                            src={image}
-                            alt={`${project.title} completed environment, supporting view ${index + 2}`}
-                            {...dimensions}
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width}
+                            height={image.height}
                             sizes={
                               isPortrait
                                 ? "(min-width: 1024px) 50vw, 100vw"
@@ -255,7 +242,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             </section>
           )}
 
-          <nav
+          {showProjectNavigation && <nav
             aria-label="Project navigation"
             className="border-b border-[#11161a]/25"
           >
@@ -284,7 +271,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 </span>
               </Link>
             </div>
-          </nav>
+          </nav>}
 
           <section className="bg-[#11161a] text-white">
             <div className="mx-auto grid max-w-[1440px] grid-cols-4 gap-x-5 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-12 lg:gap-x-8 lg:px-12 lg:py-24">
