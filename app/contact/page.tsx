@@ -16,6 +16,14 @@ type FormData = {
   company: string;
 };
 
+type GoogleAdsWindow = Window & {
+  gtag?: (
+    command: "event",
+    eventName: "conversion",
+    parameters: { send_to: string },
+  ) => void;
+};
+
 const fieldClassName =
   "w-full rounded-none border-0 border-b border-[#A7B0B4] bg-transparent px-0 py-4 text-base text-[#11161A] outline-none transition-colors placeholder:text-[#667177] focus:border-[#11161A] focus:ring-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-navy disabled:cursor-not-allowed disabled:opacity-60";
 
@@ -49,13 +57,25 @@ export default function Contact() {
       if (!response.ok) {
         throw new Error("Failed to send");
       }
-
-      setSubmitted(true);
-      reset();
     } catch {
       setSubmitError(
         "We could not send your enquiry. Please try again or email us directly.",
       );
+      return;
+    }
+
+    setSubmitted(true);
+    reset();
+
+    // The API also returns success for submissions caught by the honeypot.
+    if (data.company) return;
+
+    try {
+      (window as GoogleAdsWindow).gtag?.("event", "conversion", {
+        send_to: "AW-18568166763/vtCsCMGB4LYdEOv6_pVF",
+      });
+    } catch {
+      // A tracking failure must not affect the enquiry confirmation.
     }
   };
 

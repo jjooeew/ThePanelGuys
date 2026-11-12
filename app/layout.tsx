@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Semi_Condensed, IBM_Plex_Sans } from "next/font/google";
 import { headers } from "next/headers";
+import Script from "next/script";
 import "./globals.css";
 
 const display = Barlow_Semi_Condensed({
@@ -67,7 +68,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${body.variable} ${display.variable}`}>{children}</body>
+      <body className={`${body.variable} ${display.variable}`}>
+        {children}
+        <Script id="google-tag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+            window.gtag = function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('js', new Date());`}
+        </Script>
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WXLWL6JC"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
